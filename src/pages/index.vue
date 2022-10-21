@@ -9,10 +9,69 @@ const go = () => {
 }
 
 const { t } = useI18n()
+
+const hero = {
+  appearance: {
+    eyeColor: 'Blue',
+    gender: 'male',
+    hairColor: 'Brown',
+    height: [
+      '5\'7',
+      '170 cm',
+    ],
+    race: 'human',
+    weight: [
+      '143 lb',
+      '65 kg',
+    ],
+  },
+  biography: {
+    aliases: [
+      'Prof. Seiwald',
+      'Papi',
+      'Doc',
+    ],
+    alignment: 'good',
+    alterEgos: 'No alter egos found.',
+    firstAppearance: 'Class of 02',
+    fullName: 'Markus Seiwald',
+    placeOfBirth: 'Black Creek',
+    publisher: 'Seiwald & Gruber Inc.',
+  },
+  connections: {
+    affiliation: 'johak',
+    relatives: [
+      'Asche (Spouse)',
+      'Pauli (Son)',
+      'Lina (Daughter)',
+    ],
+  },
+  created_at: '2021-05-27T19:58:22.761Z',
+  id: 800,
+  images: {
+    md: 'images/md/800-theprof.jpg',
+  },
+  name: 'The Prof',
+  powerstats: {
+    combat: 29,
+    durability: 51,
+    intelligence: 93,
+    power: 68,
+    speed: 67,
+    strength: 25,
+  },
+  published_at: '2021-05-27T19:58:44.941Z',
+  slug: '800-theprof',
+  updated_at: '2021-05-27T20:42:29.060Z',
+  work: {
+    base: 'Salzburg City, Austria',
+    occupation: 'Teacher',
+  },
+}
 </script>
 
 <template>
-  <div>
+  <div flex flex-col items-center>
     <div text-4xl>
       <div i-carbon-campsite inline-block />
     </div>
@@ -26,6 +85,8 @@ const { t } = useI18n()
     </p>
 
     <div py-4 />
+
+    <HeroCard :hero="hero" my-4 />
 
     <input
       id="input"

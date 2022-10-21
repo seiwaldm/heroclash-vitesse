@@ -1,5 +1,19 @@
 @import './markdown.css';
 
+@font-face {
+  font-family: action-comics;
+  src: url(/action-comics.ttf);
+}
+@font-face {
+  font-family: action-comics-black;
+  src: url(/action-comics-black.ttf);
+}
+
+@font-face {
+  font-family: comic-kings;
+  src: url(/comic-kings.otf);
+}
+
 html,
 body,
 #app {

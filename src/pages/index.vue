@@ -86,6 +86,8 @@ const hero = {
 
     <div py-4 />
 
+    <SimpleSelector name="Heroes" />
+
     <HeroCard :hero="hero" my-4 />
 
     <input

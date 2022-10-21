@@ -35,4 +35,23 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
+  rules: [
+    ['hc-font-style', {
+      'filter': 'drop-shadow(2px 2px 2px #000)',
+      '-webkit-text-stroke': '1px #000',
+      'background': 'linear-gradient(45deg, #f7a823, #e4003a)',
+      '-webkit-text-fill-color': 'transparent',
+      '-webkit-background-clip': 'text',
+      'text-transform': 'uppercase',
+    }],
+    ['action-comics', {
+      'font-family': 'action-comics-black',
+    }],
+    ['comic-kings', {
+      'font-family': 'comic-kings',
+    }],
+    ['hidden-controls', {
+      '-moz-appearance': 'textfield',
+    }],
+  ],
 })

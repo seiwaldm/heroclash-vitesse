@@ -15,7 +15,7 @@ useHead({
     {
       rel: 'icon',
       type: 'image/svg+xml',
-      href: computed(() => preferredDark.value ? '/heroclash-favicon.svg' : '/heroclash-favicon.svg'),
+      href: computed(() => preferredDark.value ? '/favicon.svg' : '/favicon.svg'),
     },
   ],
 })

@@ -3,9 +3,9 @@ const props = defineProps(['hero'])
 </script>
 
 <template>
-  <div class="herocard" grid overflow-hidden border="1 gray-200 rounded ">
+  <div class="herocard" grid w="340px" overflow-hidden border="1 gray-200 rounded-2 ">
     <HeroImage :image-url="hero.images.md" />
-    <HeroStats />
+    <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ const props = defineProps(['hero'])
 .herocard{
     /* width: 320px;
     height: 240px; */
-    aspect-ratio: 4/3;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns: 1fr 1.2fr;
 }
 </style>

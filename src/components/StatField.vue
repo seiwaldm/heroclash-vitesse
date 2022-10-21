@@ -1,12 +1,28 @@
 <script setup>
 const props = defineProps(['name', 'value'])
 const emits = defineEmits(['discipline'])
+const icon = computed(() => {
+  switch (props.name) {
+    case 'strength':
+      return 'i-game-icons-muscle-up'
+    case 'speed':
+      return 'i-game-icons-speedometer'
+    case 'durability':
+      return 'i-game-icons-checked-shield'
+    case 'combat':
+      return 'i-game-icons-crossed-swords'
+    case 'intelligence':
+      return 'i-game-icons-brain'
+    case 'power':
+      return 'i-game-icons-plasma-bolt'
+  }
+})
 </script>
 
 <template>
-  <div capitalize font-bold flex justify-between px-1 w="100%" border="1 gray-100" @click="emits('discipline', name, value)">
-    <span>{{ name }}</span>
-    <span>{{ value }}</span>
+  <div capitalize font-bold flex justify-between gap-1 items-center px-1 w="100%" border="1 gray-100" @click="emits('discipline', name, value)">
+    <div :class="icon" inline-block pt="1" /><span>  {{ name }}</span>
+    <span ml="auto">{{ value }}</span>
   </div>
 </template>
 

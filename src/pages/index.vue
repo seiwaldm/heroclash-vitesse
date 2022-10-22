@@ -1,3 +1,4 @@
+<!-- eslint-disable no-console -->
 <script setup lang="ts">
 const user = useUserStore()
 const name = $ref(user.savedName)
@@ -10,64 +11,81 @@ const go = () => {
 
 const { t } = useI18n()
 
-const hero = {
+// const hero = $computed(() => {
+//   if (heroList.value)
+//     return heroList.value[currentHero.value - 1].data
+//   return {}
+// })
+
+const hero = ref({
   appearance: {
-    eyeColor: 'Blue',
-    gender: 'male',
-    hairColor: 'Brown',
+    eyeColor: 'Yellow',
+    gender: 'Male',
+    hairColor: 'No Hair',
     height: [
-      '5\'7',
-      '170 cm',
+      '6\'8',
+      '203 cm',
     ],
-    race: 'human',
+    race: 'Human',
     weight: [
-      '143 lb',
-      '65 kg',
+      '980 lb',
+      '441 kg',
     ],
   },
   biography: {
     aliases: [
-      'Prof. Seiwald',
-      'Papi',
-      'Doc',
+      'Rick Jones',
     ],
     alignment: 'good',
     alterEgos: 'No alter egos found.',
-    firstAppearance: 'Class of 02',
-    fullName: 'Markus Seiwald',
-    placeOfBirth: 'Black Creek',
-    publisher: 'Seiwald & Gruber Inc.',
+    firstAppearance: 'Hulk Vol 2 #2 (April, 2008) (as A-Bomb)',
+    fullName: 'Richard Milhouse Jones',
+    placeOfBirth: 'Scarsdale, Arizona',
+    publisher: 'Marvel Comics',
   },
   connections: {
-    affiliation: 'johak',
-    relatives: [
-      'Asche (Spouse)',
-      'Pauli (Son)',
-      'Lina (Daughter)',
-    ],
+    groupAffiliation: 'Hulk Family; Excelsior (sponsor), Avengers (honorary member); formerly partner of the Hulk, Captain America and Captain Marvel; Teen Brigade; ally of Rom',
+    relatives: 'Marlo Chandler-Jones (wife); Polly (aunt); Mrs. Chandler (mother-in-law); Keith Chandler, Ray Chandler, three unidentified others (brothers-in-law); unidentified father (deceased); Jackie Shorr (alleged mother; unconfirmed)',
   },
-  created_at: '2021-05-27T19:58:22.761Z',
-  id: 800,
+  id: 1,
   images: {
-    md: 'images/md/800-theprof.jpg',
+    lg: 'images/lg/1-a-bomb.jpg',
+    md: 'images/md/1-a-bomb.jpg',
+    sm: 'images/sm/1-a-bomb.jpg',
+    xs: 'images/xs/1-a-bomb.jpg',
   },
-  name: 'The Prof',
+  name: 'A-Bomb',
   powerstats: {
-    combat: 29,
-    durability: 51,
-    intelligence: 93,
-    power: 68,
-    speed: 67,
-    strength: 25,
+    combat: 64,
+    durability: 80,
+    intelligence: 38,
+    power: 24,
+    speed: 17,
+    strength: 100,
   },
-  published_at: '2021-05-27T19:58:44.941Z',
-  slug: '800-theprof',
-  updated_at: '2021-05-27T20:42:29.060Z',
+  slug: '1-a-bomb',
   work: {
-    base: 'Salzburg City, Austria',
-    occupation: 'Teacher',
+    base: '-',
+    occupation: 'Musician, adventurer, author; formerly talk show host',
   },
+})
+
+const heroList = ref([])
+function updateHero(counter: any) {
+  console.log(counter)
+  hero.value = heroList.value[counter - 1].data
 }
+
+const getHeroList = async () => {
+  const response = await fetch('https://hcpb.seiwald.club/api/collections/heroes/records?perPage=700')
+  const data = await response.json()
+  heroList.value = data.items
+}
+
+onMounted(() => {
+  getHeroList()
+})
+// ref(await fetch('https://hcpb.seiwald.club/api/collections/heroes/records').then(res => res.json()))
 </script>
 
 <template>
@@ -85,11 +103,11 @@ const hero = {
     </p>
 
     <div py-4 />
+    <div v-if="heroList" flex flex-col items-center>
+      <SimpleSelector name="Heroes" @update="updateHero" />
 
-    <SimpleSelector name="Heroes" />
-
-    <HeroCard :hero="hero" my-4 />
-
+      <HeroCard :hero="hero" my-4 />
+    </div>
     <input
       id="input"
       v-model="name"

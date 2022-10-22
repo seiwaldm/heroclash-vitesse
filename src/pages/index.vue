@@ -1,5 +1,6 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
+import db from '~/database/db.js'
 const user = useUserStore()
 const name = $ref(user.savedName)
 
@@ -10,12 +11,6 @@ const go = () => {
 }
 
 const { t } = useI18n()
-
-// const hero = $computed(() => {
-//   if (heroList.value)
-//     return heroList.value[currentHero.value - 1].data
-//   return {}
-// })
 
 const hero = ref({
   appearance: {
@@ -77,15 +72,18 @@ function updateHero(counter: any) {
 }
 
 const getHeroList = async () => {
-  const response = await fetch('https://hcpb.seiwald.club/api/collections/heroes/records?perPage=700')
-  const data = await response.json()
-  heroList.value = data.items
+  // const response = await fetch('https://hcpb.seiwald.club/api/collections/heroes/records?perPage=700')
+  // const data = await response.json()
+  const data = await db.records.getFullList('heroes', 200 /* batch size */, {
+    sort: 'created',
+  })
+  heroList.value = data
 }
 
 onMounted(() => {
   getHeroList()
+  console.log(db)
 })
-// ref(await fetch('https://hcpb.seiwald.club/api/collections/heroes/records').then(res => res.json()))
 </script>
 
 <template>

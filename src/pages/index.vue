@@ -102,7 +102,7 @@ onMounted(() => {
 
     <div py-4 />
     <div v-if="heroList" flex flex-col items-center>
-      <SimpleSelector name="Heroes" @update="updateHero" />
+      <SimpleSelector name="Heroes" min="1" :max="heroList ? heroList.length : 1" @update="updateHero" />
 
       <HeroCard :hero="hero" my-4 />
     </div>

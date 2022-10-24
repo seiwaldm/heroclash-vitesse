@@ -4,7 +4,7 @@ const props = defineProps(['hero'])
 
 <template>
   <div class="herocard" grid w="340px" overflow-hidden border="1 gray-200 rounded-2 ">
-    <HeroImage :image-url="hero.images.md" />
+    <HeroImage :image-url="hero.images.md" :hero-id="hero.id" />
     <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" />
   </div>
 </template>

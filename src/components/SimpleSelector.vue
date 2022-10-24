@@ -5,7 +5,8 @@ const value = ref(0)
 const counter = ref(1)
 
 function countUp() {
-  counter.value++
+  if (counter.value < props.max)
+    counter.value++
   emits('update', counter.value)
 }
 
@@ -22,12 +23,9 @@ function countDown() {
     {{ name }}
   </h1>
   <div flex m-3 justify-center>
-    <span hc-font-style comic-kings text-15 cursor-pointer @click="countDown">&lt;</span>
-    <input v-model="counter" type="number" :min="min" :max="max" hidden-controls text-center bg-transparent hc-font-style action-comics text-7 w="50%" @input="emits('update', counter)">
-    <span hc-font-style comic-kings text-15 cursor-pointer @click="countUp">&gt;</span>
+    <span hc-font-style hover:scale comic-kings text-15 cursor-pointer @click="countDown">&lt;</span>
+    <input v-model="counter" type="number" :min="min" :max="max" hidden-controls text-center bg-transparent hc-font-style action-comics text-7 w="200px" @input="emits('update', counter)">
+    <span hc-font-style hover:scale comic-kings text-15 cursor-pointer @click="countUp">&gt;</span>
   </div>
 </template>
 
-<style>
-* {border: 1px solid red}
-</style>

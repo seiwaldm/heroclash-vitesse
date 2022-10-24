@@ -37,12 +37,13 @@ export default defineConfig({
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
   rules: [
     ['hc-font-style', {
-      'filter': 'drop-shadow(2px 2px 2px #000)',
+      'filter': 'drop-shadow(2px 2px 2px var(--schwarz))',
       '-webkit-text-stroke': '1px #000',
       'background': 'linear-gradient(45deg, #f7a823, #e4003a)',
       '-webkit-text-fill-color': 'transparent',
       '-webkit-background-clip': 'text',
       'text-transform': 'uppercase',
+      'transition': 'all 0.1s ease-in-out',
     }],
     ['action-comics', {
       'font-family': 'action-comics-black',
@@ -52,6 +53,11 @@ export default defineConfig({
     }],
     ['hidden-controls', {
       '-moz-appearance': 'textfield',
+    }],
+    ['scale', {
+      transform: 'scale(1.1)',
+      cursor: 'pointer',
+      filter: 'drop-shadow(15px 15px 15px var(--schwarz))',
     }],
   ],
 })

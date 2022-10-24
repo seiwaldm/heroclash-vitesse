@@ -1,17 +1,26 @@
 @import './markdown.css';
 
 @font-face {
-  font-family: action-comics;
+  font-family:action-comics;
   src: url(/action-comics.ttf);
 }
 @font-face {
-  font-family: action-comics-black;
+  font-family:action-comics-black;
   src: url(/action-comics-black.ttf);
 }
 
 @font-face {
-  font-family: comic-kings;
+  font-family:comic-kings;
   src: url(/comic-kings.otf);
+}
+
+:root {
+  --tuerkis: #80ccdb;
+  --blau: #005577;
+  --rot: #e4003a;
+  --orange: #f7a823;
+  --dunkelblau: #1a2e3c;
+  --schwarz: #180f00;
 }
 
 html,

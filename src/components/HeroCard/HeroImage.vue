@@ -9,7 +9,3 @@ const prefix = computed(() =>
 <template>
   <img :src="`${prefix + imageUrl}`" alt="imageUrl">
 </template>
-
-<style scoped>
-
-</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="fadeOut" flex flex-col items-center gap-5>
-    <img max-w="90vw" class="vanishIn" src="/logo.svg" alt="">
+    <img max-w="90vw" class="vanishIn" src="/johak-logo.svg" alt="">
     <svg
       id="Ebene_1"
       max-w="90vw"

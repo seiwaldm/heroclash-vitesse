@@ -1,5 +1,10 @@
 <template>
-  <img class="spinner" src="/heroclash-logo.png" alt="Loading Spinner">
+  <div flex flex-col items-center gap-3 text-3>
+    <img class="spinner" src="/heroclash-logo.png" alt="Loading Spinner">
+    <div hc-font-style action-comics>
+      loading...
+    </div>
+  </div>
 </template>
 
 <style scoped>

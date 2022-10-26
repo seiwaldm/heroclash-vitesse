@@ -1,5 +1,11 @@
 <script setup>
 const router = useRouter()
+
+onMounted(() => {
+  setTimeout(() => {
+    router.push('/menu')
+  }, 4000)
+})
 </script>
 
 <template>

@@ -11,6 +11,6 @@ const props = defineProps(['hero'])
 
 <style scoped>
 .herocard{
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 160px 180px;
 }
 </style>

@@ -11,7 +11,7 @@ const alignmentClass = computed(() => {
 
 <template>
   <div flex flex-col items-start justify-between px-3 py-2 color-gray-100 :class="alignmentClass">
-    <h1 font-bold text-5>
+    <h1 font-bold text-5 style="lineHeight:1.4rem">
       {{ name }}
     </h1>
     <StatField v-for="(value, key) in stats" :key="key" :name="key" :value="value" />

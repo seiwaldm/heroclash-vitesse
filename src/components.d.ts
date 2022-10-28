@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    GameScreen: typeof import('./components/GameScreen.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     HeroCard: typeof import('./components/HeroCard/HeroCard.vue')['default']
     HeroImage: typeof import('./components/HeroCard/HeroImage.vue')['default']
@@ -18,7 +19,7 @@ declare module '@vue/runtime-core' {
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SimpleSelector: typeof import('./components/SimpleSelector.vue')['default']
+    SimpleSelector: typeof import('./components/UI/SimpleSelector.vue')['default']
     StatField: typeof import('./components/HeroCard/StatField.vue')['default']
   }
 }

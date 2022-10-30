@@ -5,54 +5,6 @@ export class Game {
     this.heap = []
     this.gameLog = []
     this.running = true
-    // this.handleCombat = (discipline) => {
-    //   console.log('combat!')
-    //   const stats1 = this.players[0].deck[0].powerstats
-    //   const stats2 = this.players[1].deck[0].powerstats
-
-    //   const p1 = this.players[0]
-    //   const p2 = this.players[1]
-
-    //   const result = stats1[discipline] - stats2[discipline]
-    //   const hero1 = p1.deck[0]
-    //   const hero2 = p2.deck[0]
-
-    //   let winner = 0
-    //   const initiative = p1.initiative ? 1 : 2
-    //   // TODO: refactor with result from determineWinner:
-    //   if (result > 0) {
-    //     winner = 1
-    //     p1.deck.push(this.players[0].deck.shift())
-    //     p1.deck.push(this.players[1].deck.shift())
-    //     p1.deck = p1.deck.concat(this.heap)
-    //     this.heap.length = 0
-    //     p1.initiative = true
-    //     p2.initiative = false
-    //   }
-    //   else if (result < 0) {
-    //     winner = 2
-    //     p2.deck.push(this.players[0].deck.shift())
-    //     p2.deck.push(this.players[1].deck.shift())
-    //     p2.deck = p2.deck.concat(this.heap)
-    //     this.heap.length = 0
-    //     p1.initiative = false
-    //     p2.initiative = true
-    //   }
-    //   else {
-    //     this.heap.push(p1.deck.shift())
-    //     this.heap.push(p1.deck.shift())
-    //     this.heap.push(p2.deck.shift())
-    //     this.heap.push(p2.deck.shift())
-    //     if (p1.initiative === true) {
-    //       p1.initiative = false
-    //       p2.initiative = true
-    //     }
-    //     else {
-    //       p1.initiative = true
-    //       p2.initiative = false
-    //     }
-    //   }
-    // }
 
     // create players
     this.players.push(new Player(playerIds[0]))
@@ -85,12 +37,12 @@ export class Game {
     }
   }
 
-  handleCombat(discipline) {
-    const stats1 = this.players[0].deck[0].powerstats
-    const stats2 = this.players[1].deck[0].powerstats
+  static handleCombat(discipline, game) {
+    const stats1 = game.players[0].deck[0].powerstats
+    const stats2 = game.players[1].deck[0].powerstats
 
-    const p1 = this.players[0]
-    const p2 = this.players[1]
+    const p1 = game.players[0]
+    const p2 = game.players[1]
 
     const result = stats1[discipline] - stats2[discipline]
     const hero1 = p1.deck[0]
@@ -101,27 +53,27 @@ export class Game {
     // TODO: refactor with result from determineWinner:
     if (result > 0) {
       winner = 1
-      p1.deck.push(this.players[0].deck.shift())
-      p1.deck.push(this.players[1].deck.shift())
-      p1.deck = p1.deck.concat(this.heap)
-      this.heap.length = 0
+      p1.deck.push(game.players[0].deck.shift())
+      p1.deck.push(game.players[1].deck.shift())
+      p1.deck = p1.deck.concat(game.heap)
+      game.heap.length = 0
       p1.initiative = true
       p2.initiative = false
     }
     else if (result < 0) {
       winner = 2
-      p2.deck.push(this.players[0].deck.shift())
-      p2.deck.push(this.players[1].deck.shift())
-      p2.deck = p2.deck.concat(this.heap)
-      this.heap.length = 0
+      p2.deck.push(game.players[0].deck.shift())
+      p2.deck.push(game.players[1].deck.shift())
+      p2.deck = p2.deck.concat(game.heap)
+      game.heap.length = 0
       p1.initiative = false
       p2.initiative = true
     }
     else {
-      this.heap.push(p1.deck.shift())
-      this.heap.push(p1.deck.shift())
-      this.heap.push(p2.deck.shift())
-      this.heap.push(p2.deck.shift())
+      game.heap.push(p1.deck.shift())
+      game.heap.push(p1.deck.shift())
+      game.heap.push(p2.deck.shift())
+      game.heap.push(p2.deck.shift())
       if (p1.initiative === true) {
         p1.initiative = false
         p2.initiative = true

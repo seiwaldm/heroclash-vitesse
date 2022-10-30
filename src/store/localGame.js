@@ -13,7 +13,7 @@ export const useLocalGameStore = defineStore(
     }
 
     function handleCombat(discipline) {
-      localGame.value.handleCombat(discipline)
+      Game.handleCombat(discipline, localGame.value)
     }
 
     return { localGame, createLocalGame, handleCombat }

@@ -20,7 +20,7 @@ const icon = computed(() => {
 </script>
 
 <template>
-  <div capitalize font-bold flex justify-between gap-1 items-center px-1 w="100%" border="1 gray-100" cursor-pointer hover:bg-black focus:bg-black @click="emits('discipline', name, value)">
+  <div capitalize font-bold flex justify-between gap-1 items-center px-1 w="100%" border="1 gray-100" cursor-pointer hover:bg-black focus:bg-black @click="emits('discipline', name)">
     <div :class="icon" inline-block pt="1" /><span>  {{ name }}</span>
     <span ml="auto">{{ value }}</span>
   </div>

@@ -12,7 +12,11 @@ export const useLocalGameStore = defineStore(
       localGame.value = new Game(mode, baseDeck, deckSize, playerCount, playerIds)
     }
 
-    return { localGame, createLocalGame }
+    function handleCombat(discipline) {
+      localGame.value.handleCombat(discipline)
+    }
+
+    return { localGame, createLocalGame, handleCombat }
   },
   {
     persist: true,

@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(['stats', 'name', 'alignment'])
+const emits = defineEmits(['discipline'])
 
 const alignmentClass = computed(() => {
   if (props.alignment === 'good' || props.alignment === 'bad')
@@ -7,6 +8,10 @@ const alignmentClass = computed(() => {
   else
     return 'neutral'
 })
+
+function discipline(name) {
+  emits('discipline', name)
+}
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const alignmentClass = computed(() => {
     <h1 font-bold text-5 style="lineHeight:1.4rem">
       {{ name }}
     </h1>
-    <StatField v-for="(value, key) in stats" :key="key" :name="key" :value="value" />
+    <StatField v-for="(value, key) in stats" :key="key" :name="key" :value="value" @discipline="discipline" />
   </div>
 </template>
 

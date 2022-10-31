@@ -16,7 +16,11 @@ export const useLocalGameStore = defineStore(
       Game.handleCombat(discipline, localGame.value)
     }
 
-    return { localGame, createLocalGame, handleCombat }
+    function resetGame() {
+      localGame.value = {}
+    }
+
+    return { localGame, createLocalGame, handleCombat, resetGame }
   },
   {
     persist: true,

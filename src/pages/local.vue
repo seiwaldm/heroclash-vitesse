@@ -21,7 +21,7 @@ function createGame() {
 </script>
 
 <template>
-  <GameScreen v-if="localGameStore.localGame.running" />
+  <GameScreen v-if="localGameStore.localGame.running" mode="local" />
   <nav v-else>
     <SimpleSelector name="Players" init-value="1" min="0" max="2" @update="updatePlayerCount" />
     <SimpleSelector name="Deck Size" init-value="10" min="1" max="250" @update="updateDeckSize" />

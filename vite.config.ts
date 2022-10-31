@@ -95,6 +95,25 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/raw\.githubusercontent\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'hero-images-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
+      },
       includeAssets: ['favicon.svg'],
       devOptions: {
         enabled: true,
@@ -102,6 +121,7 @@ export default defineConfig({
       manifest: {
         name: 'Heroclash',
         short_name: 'Heroclash',
+        description: 'A Card Game developed at JOHAK',
         theme_color: '#ffffff',
         icons: [
           {

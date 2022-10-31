@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    GameScore: typeof import('./components/GameScore.vue')['default']
     GameScreen: typeof import('./components/GameScreen.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     HeroCard: typeof import('./components/HeroCard/HeroCard.vue')['default']
@@ -16,6 +17,7 @@ declare module '@vue/runtime-core' {
     HeroStats: typeof import('./components/HeroCard/HeroStats.vue')['default']
     JohakAnimation: typeof import('./components/UI/JohakAnimation.vue')['default']
     LoadingSpinner: typeof import('./components/UI/LoadingSpinner.vue')['default']
+    PlayerScore: typeof import('./components/PlayerScore.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

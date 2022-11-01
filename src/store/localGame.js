@@ -16,11 +16,15 @@ export const useLocalGameStore = defineStore(
       Game.handleCombat(discipline, localGame.value)
     }
 
+    function chooseDiscipline(player) {
+      return Game.chooseDiscipline(player)
+    }
+
     function resetGame() {
       localGame.value = {}
     }
 
-    return { localGame, createLocalGame, handleCombat, resetGame }
+    return { localGame, createLocalGame, handleCombat, resetGame, chooseDiscipline }
   },
   {
     persist: true,

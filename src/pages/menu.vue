@@ -3,7 +3,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <nav flex flex-col justify-evenly gap-10>
+  <nav flex flex-col justify-evenly gap-15>
     <RouterLink to="/gallery">
       <div hc-font-style hover:scale inline-block action-comics text-7>
         Gallery
@@ -17,11 +17,6 @@ const router = useRouter()
     <RouterLink to="/online">
       <div hc-font-style hover:scale inline-block action-comics text-7>
         Online Mode
-      </div>
-    </RouterLink>
-    <RouterLink to="/spinner">
-      <div hc-font-style hover:scale inline-block action-comics text-7>
-        Loading Spinner
       </div>
     </RouterLink>
   </nav>

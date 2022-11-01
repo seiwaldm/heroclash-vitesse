@@ -1,8 +1,12 @@
+<script setup>
+const props = defineProps(['message'])
+</script>
+
 <template>
   <div flex flex-col items-center gap-3 text-3>
     <img class="spinner" src="/heroclash-logo.png" alt="Loading Spinner">
     <div hc-font-style action-comics>
-      loading...
+      {{ message }}
     </div>
   </div>
 </template>

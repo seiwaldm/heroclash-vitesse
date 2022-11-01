@@ -4,7 +4,7 @@ const localGameStore = useLocalGameStore()
 </script>
 
 <template>
-  <div flex gap-9 items-end>
+  <div flex gap-9 items-end font-bold>
     <PlayerScore :name="localGameStore.localGame.players[0].name" :score="localGameStore.localGame.players[0].deck.length" />
     <div>
       <div>Heap</div>

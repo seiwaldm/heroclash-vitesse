@@ -83,6 +83,8 @@ export class Game {
         p2.initiative = false
       }
     }
+    if (p1.deck.length === 0 || p2.deck.length === 0)
+      game.running = false
   }
 }
 class Player {

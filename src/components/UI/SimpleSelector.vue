@@ -2,11 +2,11 @@
 const props = defineProps({
   name: String,
   initValue: {
-    type: Number,
-    default: 1,
+    type: String,
+    default: '1',
   },
-  min: Number,
-  max: Number,
+  min: String,
+  max: String,
 })
 const emits = defineEmits(['update'])
 const counter = ref(props.initValue)

@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     GameScore: typeof import('./components/GameScore.vue')['default']
     GameScreen: typeof import('./components/GameScreen.vue')['default']

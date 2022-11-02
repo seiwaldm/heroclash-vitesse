@@ -8,13 +8,14 @@ const localGameStore = useLocalGameStore()
 const winner = computed(() => localGameStore.localGame.players[0].deck.length > 0 ? localGameStore.localGame.players[0].name : localGameStore.localGame.players[1].name)
 
 function handleCombat(discipline) {
+  localGameStore.localGame.currentDiscipline = discipline
   visible1.value = true
   visible2.value = true
   setTimeout(() => {
     localGameStore.handleCombat(discipline)
     visible1.value = false
     visible2.value = false
-  }, 1500)
+  }, 2000)
 }
 
 function botTurn() {

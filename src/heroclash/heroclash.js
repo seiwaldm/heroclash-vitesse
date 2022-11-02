@@ -5,6 +5,7 @@ export class Game {
     this.heap = []
     this.gameLog = []
     this.running = true
+    this.currentDiscipline = ''
 
     // create players
     this.players.push(new Player(playerIds[0]))
@@ -104,6 +105,7 @@ export class Game {
       value2: stats2[discipline],
       winner,
     })
+    game.currentDiscipline = ''
   }
 
   static chooseDiscipline(player) {

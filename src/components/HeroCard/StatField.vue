@@ -17,12 +17,19 @@ const icon = computed(() => {
       return 'i-game-icons-plasma-bolt'
   }
 })
+const localGameStore = useLocalGameStore()
 </script>
 
 <template>
-  <div capitalize font-bold flex justify-between gap-1 items-center px-1 w="100%" border="1 gray-100" cursor-pointer hover:bg-black focus:bg-black @click="emits('discipline', name)">
+  <div capitalize font-bold flex justify-between gap-1 items-center px-1 w="100%" border="1 gray-100" cursor-pointer hover:bg-black focus:bg-black :class="{ chosenDiscipline: name === localGameStore.localGame.currentDiscipline }" @click="emits('discipline', name)">
     <div :class="icon" inline-block pt="1" /><span>  {{ name }}</span>
     <span ml="auto">{{ value }}</span>
   </div>
 </template>
 
+<style scoped>
+.chosenDiscipline {
+  background-color: #000000;
+  color: #ffffff;
+}
+</style>

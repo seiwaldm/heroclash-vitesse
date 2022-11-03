@@ -27,7 +27,7 @@ onUpdated(() => {
 
 <template>
   <GameScreen v-if="localGameStore.localGame.players" mode="local" />
-  <nav v-else flex flex-col gap-10>
+  <nav v-else flex flex-col gap-5>
     <SimpleSelector name="Players" min="0" max="2" @update="updatePlayerCount" />
     <SimpleSelector name="Deck Size" init-value="10" min="1" max="250" @update="updateDeckSize" />
     <button hc-font-style action-comics hover:scale text-7 @click="createGame">

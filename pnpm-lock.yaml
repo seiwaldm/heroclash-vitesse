@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': ^0.27.0
   '@iconify-json/carbon': ^1.1.8
+  '@iconify-json/game-icons': ^1.1.0
   '@intlify/vite-plugin-vue-i18n': ^6.0.3
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/nprogress': ^0.2.0
@@ -22,8 +23,8 @@ specifiers:
   nprogress: ^0.2.0
   pinia: ^2.0.22
   pinia-plugin-persistedstate: ^2.3.0
-  pocketbase: ^0.7.4
   pnpm: ^7.13.2
+  pocketbase: ^0.7.4
   shiki: ^0.11.1
   taze: ^0.8.2
   typescript: ^4.8.4
@@ -52,6 +53,8 @@ dependencies:
   '@vueuse/head': 0.9.7_vue@3.2.40
   nprogress: 0.2.0
   pinia: 2.0.22_bfjwoga25wxjazzogo7o372nwq
+  pinia-plugin-persistedstate: 2.3.0_pinia@2.0.22
+  pocketbase: 0.7.4
   vue: 3.2.40
   vue-demi: 0.13.11_vue@3.2.40
   vue-i18n: 9.2.2_vue@3.2.40
@@ -60,6 +63,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.27.0_z4bbprzjrhnsfa24uvmcbu7f5q
   '@iconify-json/carbon': 1.1.8
+  '@iconify-json/game-icons': 1.1.0
   '@intlify/vite-plugin-vue-i18n': 6.0.3_vite@3.1.6+vue-i18n@9.2.2
   '@types/markdown-it-link-attributes': 3.0.1
   '@types/nprogress': 0.2.0
@@ -1448,6 +1452,12 @@ packages:
     resolution: {integrity: sha512-aSoMgvZyvIXadLbMXcfS+qy8CVxSExvvp8Vd/nCrupLFc0KLKSukRInnVNc63zaHqoe1NBf5xUrgfyRYYfaKWQ==}
     dependencies:
       '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/game-icons/1.1.0:
+    resolution: {integrity: sha512-F1/feuC2/Fo9pdn95KFdXbOWuV806eOYPOrKoLhIvZxmCZZ1PcNqNQ5Yqol3/j4KWSli+kwzYCvU+D3bdb+djw==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types/1.1.0:
@@ -6591,6 +6601,17 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /pinia-plugin-persistedstate/2.3.0_pinia@2.0.22:
+    resolution: {integrity: sha512-K7vzt68Z3lbMDjb23Ki2vgHVBP2QFvjl7WNwzIwqY/DAkhSt8mi/z6bN/cXTst7fJjXWF0lC9NyxFKHfxWehuw==}
+    peerDependencies:
+      pinia: ^2.0.0
+    peerDependenciesMeta:
+      pinia:
+        optional: true
+    dependencies:
+      pinia: 2.0.22_bfjwoga25wxjazzogo7o372nwq
+    dev: false
+
   /pinia/2.0.22_bfjwoga25wxjazzogo7o372nwq:
     resolution: {integrity: sha512-u+b8/BC+tmvo3ACbYO2w5NfxHWFOjvvw9DQnyT0dW8aUMCPRQT5QnfZ5R5W2MzZBMTeZRMQI7V/QFbafmM9QHw==}
     peerDependencies:
@@ -6627,6 +6648,10 @@ packages:
     engines: {node: '>=14.6'}
     hasBin: true
     dev: true
+
+  /pocketbase/0.7.4:
+    resolution: {integrity: sha512-PvBRi4hbgbiBwDjhHa9lGD/ala8dSTjKeNAsHAgsXdIo4v9RgCk2s3Zqd/4UXVBgTJHVM6F7fGOZPvvJfSNVLQ==}
+    dev: false
 
   /postcss-selector-parser/6.0.10:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}

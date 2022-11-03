@@ -53,7 +53,7 @@ onMounted(botTurn)
         {{ winner }} wins
       </div>
     </div>
-    <div v-if="mode === 'local'" flex justify-evenly>
+    <div v-if="mode === 'local'" flex justify-center gap-7>
       <button hc-font-style action-comics hover:scale text-5 @click="localGameStore.resetGame">
         New Game
       </button>

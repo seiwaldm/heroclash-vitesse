@@ -37,7 +37,7 @@ export default defineConfig({
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
   rules: [
     ['hc-font-style', {
-      'filter': 'drop-shadow(2px 2px 2px var(--schwarz))',
+      'filter': 'drop-shadow(2px 2px 2px)',
       '-webkit-text-stroke': '1px #000',
       'background': 'linear-gradient(45deg, #f7a823, #e4003a)',
       '-webkit-text-fill-color': 'transparent',
@@ -57,7 +57,7 @@ export default defineConfig({
     ['scale', {
       transform: 'scale(1.1)',
       cursor: 'pointer',
-      filter: 'drop-shadow(15px 15px 15px var(--schwarz))',
+      filter: 'drop-shadow(15px 15px 15px)',
     }],
   ],
 })

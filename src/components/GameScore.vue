@@ -1,5 +1,4 @@
 <script setup>
-import { useLocalGameStore } from '~/store/localGame'
 const localGameStore = useLocalGameStore()
 </script>
 

@@ -1,7 +1,4 @@
 <script setup>
-import { useLocalGameStore } from '~/store/localGame'
-import { useCardsStore } from '~/store/cards.js'
-
 const localGameStore = useLocalGameStore()
 const cardsStore = useCardsStore()
 

@@ -4,6 +4,8 @@ const bgColor = computed(() => isDark.value ? '#121212' : '#ffffff')
 const visible1 = ref(false)
 const visible2 = ref(false)
 
+const settingsStore = useSettingsStore()
+
 const localGameStore = useLocalGameStore()
 const winner = computed(() => localGameStore.localGame.players[0].deck.length > 0 ? localGameStore.localGame.players[0].name : localGameStore.localGame.players[1].name)
 
@@ -42,7 +44,7 @@ onMounted(botTurn)
 <template>
   <div flex flex-col justify-center gap-15 class="mobile-cover-screen" h="50vh" z-1 :style="{ backgroundColor: bgColor }">
     <div v-if="localGameStore.localGame.running" flex flex-col lg:flex-row items-center gap-13>
-      <HeroCard :class="{ turned: !visible1 && !localGameStore.localGame.players[0].initiative }" :hero="localGameStore.localGame.players[0].deck[0]" @discipline="handleCombat" />
+      <HeroCard :class="{ turned: !visible1 && !localGameStore.localGame.players[0].initiative, duellView: settingsStore.settings.duellView }" transition-transform :hero="localGameStore.localGame.players[0].deck[0]" @discipline="handleCombat" />
       <GameScore :mode="props.mode" />
       <HeroCard :class="{ turned: !visible2 && !localGameStore.localGame.players[1].initiative }" :hero="localGameStore.localGame.players[1].deck[0]" @discipline="handleCombat" />
     </div>
@@ -51,9 +53,14 @@ onMounted(botTurn)
         {{ winner }} wins
       </div>
     </div>
-    <button v-if="mode === 'local'" hc-font-style action-comics hover:scale text-5 @click="localGameStore.resetGame">
-      New Game
-    </button>
+    <div v-if="mode === 'local'" flex justify-evenly>
+      <button hc-font-style action-comics hover:scale text-5 @click="localGameStore.resetGame">
+        New Game
+      </button>
+      <button class="icon-btn mx-2 !outline-none" @click="settingsStore.toggleDuellView">
+        <div text-7 i="carbon-arrows-vertical" lg:hidden />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -63,7 +70,10 @@ onMounted(botTurn)
     position: absolute;
     height: 100vh;
     width: 100vw;
+  }
 
+  .duellView {
+    transform: rotate(180deg);
   }
 }
 </style>

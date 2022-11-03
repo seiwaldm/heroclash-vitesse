@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./components/Header.vue')['default']
     HeroCard: typeof import('./components/HeroCard/HeroCard.vue')['default']
     HeroImage: typeof import('./components/HeroCard/HeroImage.vue')['default']
+    HeroModal: typeof import('./components/HeroCard/HeroModal.vue')['default']
     HeroStats: typeof import('./components/HeroCard/HeroStats.vue')['default']
     JohakAnimation: typeof import('./components/UI/JohakAnimation.vue')['default']
     LoadingSpinner: typeof import('./components/UI/LoadingSpinner.vue')['default']

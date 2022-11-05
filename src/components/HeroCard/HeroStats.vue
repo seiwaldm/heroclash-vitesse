@@ -22,15 +22,3 @@ function discipline(name) {
     <StatField v-for="(value, key) in stats" :key="key" :name="key" :value="value" @discipline="discipline" />
   </div>
 </template>
-
-<style scoped>
-.good{
-  background: linear-gradient(-45deg, var(--tuerkis), var(--blau));
-}
-.bad{
-  background: linear-gradient(-45deg, var(--orange), var(--rot));
-}
-.neutral {
-  background: linear-gradient(-45deg, var(--orange), var(--blau));
-}
-</style>

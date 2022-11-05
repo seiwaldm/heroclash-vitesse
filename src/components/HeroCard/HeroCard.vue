@@ -1,6 +1,7 @@
 <script setup>
 const props = defineProps(['hero'])
 const emits = defineEmits(['discipline'])
+const showBiography = ref(false)
 
 function discipline(name) {
   emits('discipline', name)
@@ -8,14 +9,17 @@ function discipline(name) {
 </script>
 
 <template>
-  <div class="herocard" w="340px" border="1 gray-200 rounded-2">
-    <div class="flip-card-inner">
-      <div class="flip-card-front" overflow-hidden rounded-2>
-        <HeroImage :image-url="hero.images.md" :hero-id="hero.id" />
-        <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" @discipline="discipline" />
+  <div>
+    <div class="herocard" w="340px" border="1 gray-200 rounded-2">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" overflow-hidden rounded-2>
+          <HeroImage :image-url="hero.images.md" :hero-id="hero.id" @show-biography="showBiography = true" />
+          <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" @discipline="discipline" />
+        </div>
+        <div class="flip-card-back" overflow-hidden rounded-2 />
       </div>
-      <div class="flip-card-back" overflow-hidden rounded-2 />
     </div>
+    <HeroModal v-if="showBiography" :hero="hero" @close="showBiography = false" />
   </div>
 </template>
 

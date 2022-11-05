@@ -71,5 +71,6 @@ function updateHero(counter) {
     <SimpleSelector name="Hero Nr." min="1" :max="countHeroes" @update="updateHero" />
 
     <HeroCard :hero="hero" my-4 />
+    <div>(Click on Image for Character Details)</div>
   </div>
 </template>

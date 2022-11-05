@@ -60,3 +60,13 @@ html.dark {
 .fade-leave-to {
   opacity: 0;
 }
+
+.good{
+  background: linear-gradient(-45deg, var(--tuerkis), var(--blau));
+}
+.bad{
+  background: linear-gradient(-45deg, var(--orange), var(--rot));
+}
+.neutral {
+  background: linear-gradient(-45deg, var(--orange), var(--blau));
+}

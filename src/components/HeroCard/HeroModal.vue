@@ -4,7 +4,7 @@ const emits = defineEmits(['close'])
 </script>
 
 <template>
-  <div class="modal" w="100vw" h="100%" z="1" text-left absolute top-0 left-0 @click="emits('close')">
+  <div class="modal" w="100vw" h="100%" z="9" text-left absolute top-0 left-0 @click="emits('close')">
     <div rounded overflow-hidden class="modal-content">
       <div text-6 p-2 text-white font-bold :class="hero.biography.alignment">
         {{ hero.name }}
@@ -38,6 +38,7 @@ const emits = defineEmits(['close'])
 <style scoped>
 .modal {
     background-color: rgba(18,18,18,0.5);
+
 }
 .modal li {
   list-style-type: none;

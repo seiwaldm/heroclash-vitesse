@@ -3,6 +3,8 @@ const props = defineProps(['hero'])
 const emits = defineEmits(['discipline'])
 const showBiography = ref(false)
 
+const settingsStore = useSettingsStore()
+
 function discipline(name) {
   emits('discipline', name)
 }
@@ -19,7 +21,7 @@ function discipline(name) {
         <div class="flip-card-back" overflow-hidden rounded-2 />
       </div>
     </div>
-    <HeroModal v-if="showBiography" :hero="hero" @close="showBiography = false" />
+    <HeroModal v-if="showBiography && !settingsStore.settings.duellView" :hero="hero" @close="showBiography = false" />
   </div>
 </template>
 

@@ -31,7 +31,7 @@ function toggleInputType() {
     <div flex gap-3 justify-between w="100%" items-center relative>
       <label for="password">Passwort</label>
       <input id="password" v-model="password" b-1 :type="inputType" name="password">
-      <button :i="icon" absolute right="0.5rem" @click="toggleInputType" />
+      <button i="carbon-view" absolute right="0.5rem" @click="toggleInputType" />
     </div>
     <div v-if="register" flex gap-3 justify-between items-end w="100%">
       <label for="passwordRepeat" text-left>Passwort<br>wiederholen</label>

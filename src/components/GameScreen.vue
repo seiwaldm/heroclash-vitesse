@@ -42,7 +42,7 @@ onMounted(botTurn)
 </script>
 
 <template>
-  <div flex flex-col justify-center class="mobile-cover-screen" z-1 :style="{ backgroundColor: bgColor }">
+  <div flex flex-col justify-center>
     <div v-if="localGameStore.localGame.running" flex flex-col lg:flex-row items-center gap-13>
       <HeroCard :class="{ turned: !visible1 && !localGameStore.localGame.players[0].initiative, duellView: settingsStore.settings.duellView }" transition-transform :hero="localGameStore.localGame.players[0].deck[0]" @discipline="handleCombat" />
       <GameScore :mode="props.mode" />
@@ -65,16 +65,7 @@ onMounted(botTurn)
 </template>
 
 <style scoped>
-@media (max-width: 1024px) {
-  .mobile-cover-screen {
-    position: absolute;
-    padding: 100px 0;
-    min-height: 100vh;
-    width: 100vw;
-  }
-
   .duellView {
     transform: rotate(180deg);
   }
-}
 </style>

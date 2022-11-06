@@ -8,7 +8,7 @@ const filter = ref('')
 const filteredHeroList = computed(() => {
   const result = cardStore.cards.map(card => card.data).filter(hero => hero.name.toLowerCase().includes(filter.value.toLowerCase()))
   if (result.length === 0)
-    return [{ appearance: {}, biography: { alignment: '' }, connections: {}, name: 'No Name', id: '0', work: {}, images: { md: 'images/md/no-portrait.jpg' }, powerstat: { combat: 404, durability: 404, intelligence: 404, power: 404, speed: 404, strength: 404 }, slug: 'no-name' }]
+    return [{ appearance: {}, biography: { alignment: 'neutral' }, connections: {}, name: 'Not found', id: '0', work: {}, images: { md: 'images/md/no-portrait.jpg' }, powerstats: { combat: 404, durability: 404, intelligence: 404, power: 404, speed: 404, strength: 404 }, slug: 'not-found' }]
   return result
 })
 const hero = computed(() => {

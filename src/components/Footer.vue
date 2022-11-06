@@ -11,6 +11,10 @@
     <RouterLink class="icon-btn mx-2" to="/about">
       <div i-carbon-dicom-overlay />
     </RouterLink>
+
+    <RouterLink class="icon-btn mx-2" to="/user">
+      <div i-carbon-user />
+    </RouterLink>
   </nav>
 </template>
 

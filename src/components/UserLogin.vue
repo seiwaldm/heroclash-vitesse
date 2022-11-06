@@ -23,7 +23,7 @@ function toggleInputType() {
 </script>
 
 <template>
-  <form flex flex-col gap-3 items-start>
+  <form flex flex-col gap-3 items-start @submit.prevent="">
     <div flex gap-3 justify-between w="100%">
       <label for="email">E-Mail</label>
       <input id="email" v-model="email" b-1 type="email" name="email">

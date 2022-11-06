@@ -24,7 +24,12 @@ export const useUserStore = defineStore('user', () => {
       console.log(error)
     }
   }
-  return { user, logIn, register }
+
+  async function logOut() {
+    db.authStore.clear()
+    user.value = null
+  }
+  return { user, logIn, register, logOut }
 },
 {
   persist: true,

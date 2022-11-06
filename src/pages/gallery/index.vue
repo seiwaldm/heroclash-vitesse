@@ -6,7 +6,10 @@ const cardStore = useCardsStore()
 const counter = ref(0)
 const filter = ref('')
 const filteredHeroList = computed(() => {
-  return cardStore.cards.map(card => card.data).filter(hero => hero.name.toLowerCase().includes(filter.value.toLowerCase()))
+  const result = cardStore.cards.map(card => card.data).filter(hero => hero.name.toLowerCase().includes(filter.value.toLowerCase()))
+  if (result.length === 0)
+    return [{ appearance: {}, biography: { alignment: '' }, connections: {}, name: 'No Name', id: '0', work: {}, images: { md: 'images/md/no-portrait.jpg' }, powerstat: { combat: 404, durability: 404, intelligence: 404, power: 404, speed: 404, strength: 404 }, slug: 'no-name' }]
+  return result
 })
 const hero = computed(() => {
   return filteredHeroList.value[counter.value]
@@ -24,7 +27,7 @@ function updateHero(newCounter) {
 <template>
   <div flex flex-col gap-1 items-center>
     <SimpleSelector name="Hero Nr." min="1" :max="countHeroes" @update="updateHero" />
-    <div><input v-model="filter" type="text" placeholder="filter Heroes by Name..." b="1" rounded></div>
+    <div><input v-model="filter" type="text" placeholder="filter Heroes by Name..." b="1" rounded @input="counter = 0"></div>
     <HeroCard :hero="hero" my-4 />
     <div>(Click on Image for Character Details)</div>
   </div>

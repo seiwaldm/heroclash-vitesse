@@ -23,5 +23,6 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SimpleSelector: typeof import('./components/UI/SimpleSelector.vue')['default']
     StatField: typeof import('./components/HeroCard/StatField.vue')['default']
+    UserLogin: typeof import('./components/UserLogin.vue')['default']
   }
 }

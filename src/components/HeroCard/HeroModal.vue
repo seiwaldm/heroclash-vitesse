@@ -4,12 +4,12 @@ const emits = defineEmits(['close'])
 </script>
 
 <template>
-  <div class="modal" w="100vw" h="100%" z="9" text-left absolute top-0 left-0 @click="emits('close')">
+  <div class="modal" w="100vw" h="150vh" z="1" text-left absolute top-0 left-0 @click="emits('close')">
     <div rounded overflow-hidden class="modal-content">
       <div text-6 p-2 text-white font-bold :class="hero.biography.alignment">
         {{ hero.name }}
       </div>
-      <div text-4 text-black p-2>
+      <div text-4 p-2 bg-light dark:bg-dark>
         <ul>
           <li v-for="(value, key) in hero.biography" :key="key" flex gap-3>
             <span>{{ key }}:</span><span>{{ value }}</span>
@@ -48,7 +48,6 @@ const emits = defineEmits(['close'])
 .modal-content {
   position: relative;
   top: 50px;
-  background-color: #fefefe;
   margin: auto;
   width: clamp(300px, 80%, 800px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);

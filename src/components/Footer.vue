@@ -1,5 +1,5 @@
 <template>
-  <nav absolute flex justify-center w="100%" bottom="0" text-7 my-6 mx-0>
+  <nav flex justify-center w="100%" text-7 my-6 mx-0>
     <RouterLink class="icon-btn mx-2" to="/menu">
       <div i-carbon-campsite />
     </RouterLink>

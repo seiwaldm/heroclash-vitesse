@@ -9,7 +9,7 @@ const password = ref('')
 const passwordRepeat = ref('')
 const name = ref('')
 const register = ref(false)
-const redirectUrl = ref('http://localhost:3333/auth')
+const redirectUrl = ref('https://heroclash.seiwald.club/auth')
 
 const inputType = ref('password')
 const icon = ref('carbon-view')

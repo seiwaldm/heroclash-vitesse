@@ -1,4 +1,6 @@
 <script setup>
+import { routerKey } from 'vue-router'
+
 const emits = defineEmits(['register'])
 
 const userStore = useUserStore()
@@ -7,6 +9,7 @@ const password = ref('')
 const passwordRepeat = ref('')
 const name = ref('')
 const register = ref(false)
+const redirectUrl = ref('http://localhost:3333/auth')
 
 const inputType = ref('password')
 const icon = ref('carbon-view')
@@ -19,6 +22,11 @@ function toggleInputType() {
     inputType.value = 'password'
     icon.value = 'carbon-view'
   }
+}
+
+async function loginWithProvider(provider) {
+  userStore.providerName = provider
+  await userStore.listAuthProviders()
 }
 </script>
 
@@ -38,12 +46,12 @@ function toggleInputType() {
       <input id="passwordRepeat" v-model="passwordRepeat" b-1 :type="inputType" name="passwordRepeat">
     </div>
 
-    <button v-if="!register" type="submit" self-end @click.prevent="userStore.logIn(email, password)">
+    <button v-if="!register" class="button" type="submit" self-end @click.prevent="userStore.logIn(email, password)">
       Anmelden
     </button>
     <div v-if="!register" flex justify-between w="100%">
       <p>Noch kein Konto?</p>
-      <button @click.prevent="register = true">
+      <button class="button" @click.prevent="register = true">
         Registrieren
       </button>
     </div>
@@ -60,15 +68,15 @@ function toggleInputType() {
         </li>
       </ul>
     </div>
-    <!-- <div v-if="!register" self-center>
+    <div v-if="!register" self-center>
       oder
     </div>
-    <button v-if="!register" self-stretch flex justify-center items-center gap-3>
+    <a v-if="!register" class="button" :href="userStore.providers[0].authUrl + redirectUrl" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
       Anmelden mit Google <div i-ant-design-google-outlined inline text-6 />
-    </button>
-    <button v-if="!register" self-stretch flex justify-center items-center gap-3>
+    </a>
+    <a v-if="!register" class="button" self-stretch flex justify-center items-center gap-3>
       Anmelden mit GitHub <div i-carbon-logo-github inline text-6 />
-    </button> -->
+    </a>
   </form>
 
   <!-- <button>Log In with Google</button>
@@ -76,7 +84,7 @@ function toggleInputType() {
 </template>
 
 <style scoped>
-button {
+.button {
     border-width: 1px;
     padding: 0.25rem 0.5rem;
 }

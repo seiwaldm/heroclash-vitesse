@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useCardsStore } from '~/store/cards'
 const cards = useCardsStore()
+const userStore = useUserStore()
 
 onMounted(() => {
   cards.loadCards()
+  userStore.listAuthProviders()
 })
 
 // https://github.com/vueuse/head

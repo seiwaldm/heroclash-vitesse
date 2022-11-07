@@ -6,7 +6,7 @@ const userStore = useUserStore()
   <div>
     <UserLogin v-if="!userStore.user" />
     <div v-else>
-      <div>Hello {{ userStore.user.user.email }}!</div>
+      <div>Hello {{ userStore.user.email }}!</div>
       <button @click="userStore.logOut">
         Abmelden
       </button>

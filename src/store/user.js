@@ -4,10 +4,12 @@ import db from '~/database/db.js'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref(null)
+  const providers = ref([])
+  const providerName = ref([])
 
   async function logIn(mail, password) {
     const data = await db.users.authViaEmail(mail, password)
-    user.value = data
+    user.value = data.user
   }
 
   async function register(mail, password, passwordRepeat) {
@@ -29,7 +31,13 @@ export const useUserStore = defineStore('user', () => {
     db.authStore.clear()
     user.value = null
   }
-  return { user, logIn, register, logOut }
+
+  async function listAuthProviders() {
+    const data = await db.users.listAuthMethods()
+    providers.value = data.authProviders
+  }
+
+  return { user, logIn, register, logOut, providers, listAuthProviders, providerName }
 },
 {
   persist: true,

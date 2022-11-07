@@ -4,7 +4,8 @@ import db from '~/database/db.js'
 const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
-const redirectUrl = ref('http://localhost:3333/auth')
+const redirectUrl = ref('https://heroclash.seiwald.club/auth')
+// const redirectUrl = ref('http://localhost:3333/auth')
 
 function loginWithProvider() {
   const provider = userStore.providers.filter(provider => provider.name === userStore.providerName)[0]

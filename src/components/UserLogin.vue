@@ -10,6 +10,7 @@ const passwordRepeat = ref('')
 const name = ref('')
 const register = ref(false)
 const redirectUrl = ref('https://heroclash.seiwald.club/auth')
+// const redirectUrl = ref('http://localhost:3333/auth')
 
 const inputType = ref('password')
 const icon = ref('carbon-view')
@@ -24,6 +25,10 @@ function toggleInputType() {
   }
 }
 
+function providerUrl(providerName) {
+  return userStore.providers.filter(provider => providerName === provider.name)[0].authUrl
+}
+
 async function loginWithProvider(provider) {
   userStore.providerName = provider
   await userStore.listAuthProviders()
@@ -34,16 +39,16 @@ async function loginWithProvider(provider) {
   <form flex flex-col gap-3 items-start @submit.prevent="">
     <div flex gap-3 justify-between w="100%">
       <label for="email">E-Mail</label>
-      <input id="email" v-model="email" b-1 type="email" name="email">
+      <input id="email" v-model="email" b-1 w="20ch" type="email" name="email">
     </div>
     <div flex gap-3 justify-between w="100%" items-center relative>
       <label for="password">Passwort</label>
-      <input id="password" v-model="password" b-1 :type="inputType" name="password">
+      <input id="password" v-model="password" w="20ch" b-1 :type="inputType" name="password">
       <button i-carbon-view absolute right="0.5rem" @click="toggleInputType" />
     </div>
     <div v-if="register" flex gap-3 justify-between items-end w="100%">
       <label for="passwordRepeat" text-left>Passwort<br>wiederholen</label>
-      <input id="passwordRepeat" v-model="passwordRepeat" b-1 :type="inputType" name="passwordRepeat">
+      <input id="passwordRepeat" v-model="passwordRepeat" w="20ch" b-1 :type="inputType" name="passwordRepeat">
     </div>
 
     <button v-if="!register" class="button" type="submit" self-end @click.prevent="userStore.logIn(email, password)">
@@ -71,12 +76,14 @@ async function loginWithProvider(provider) {
     <div v-if="!register" self-center>
       oder
     </div>
-    <a v-if="!register" class="button" :href="userStore.providers[0].authUrl + redirectUrl" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
-      Anmelden mit Google <div i-ant-design-google-outlined inline text-6 />
-    </a>
-    <a v-if="!register" class="button" self-stretch flex justify-center items-center gap-3>
-      Anmelden mit GitHub <div i-carbon-logo-github inline text-6 />
-    </a>
+    <div v-if="userStore.providers" flex flex-col gap-3 w="100%">
+      <a v-if="!register" class="button" :href="providerUrl('google') + redirectUrl" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
+        Anmelden mit Google <div i-ant-design-google-outlined inline text-6 />
+      </a>
+      <a v-if="!register" class="button" :href="providerUrl('github') + redirectUrl" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('github')">
+        Anmelden mit GitHub <div i-carbon-logo-github inline text-6 />
+      </a>
+    </div>
   </form>
 
   <!-- <button>Log In with Google</button>

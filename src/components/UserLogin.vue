@@ -29,9 +29,11 @@ function providerUrl(providerName) {
   return userStore.providers.filter(provider => providerName === provider.name)[0].authUrl
 }
 
-async function loginWithProvider(provider) {
-  userStore.providerName = provider
-  await userStore.listAuthProviders()
+function loginWithProvider(provider) {
+  userStore.listAuthProviders().then(() => {
+    userStore.providerName = provider
+    window.location.href = providerUrl(provider) + redirectUrl.value
+  })
 }
 </script>
 
@@ -77,12 +79,12 @@ async function loginWithProvider(provider) {
       oder
     </div>
     <div v-if="userStore.providers" flex flex-col gap-3 w="100%">
-      <a v-if="!register" class="button" :href="providerUrl('google') + redirectUrl" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
+      <button v-if="!register" class="button" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
         Anmelden mit Google <div i-ant-design-google-outlined inline text-6 />
-      </a>
-      <a v-if="!register" class="button" :href="providerUrl('github') + redirectUrl" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('github')">
+      </button>
+      <button v-if="!register" class="button" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('github')">
         Anmelden mit GitHub <div i-carbon-logo-github inline text-6 />
-      </a>
+      </button>
     </div>
   </form>
 

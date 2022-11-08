@@ -9,6 +9,10 @@ const redirectUrl = ref('https://heroclash.seiwald.club/auth')
 
 function loginWithProvider() {
   const provider = userStore.providers.filter(provider => provider.name === userStore.providerName)[0]
+
+  if (provider.state !== route.query.state)
+    throw new Error('State parameters don\'t match.')
+
   db.users.authViaOAuth2(userStore.providerName, route.query.code, provider.codeVerifier, redirectUrl.value)
     .then((authData) => { userStore.user = authData.user })
     .then(() => router.push('/user')).catch(err => console.log(err))

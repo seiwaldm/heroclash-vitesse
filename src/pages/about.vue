@@ -9,7 +9,7 @@ useHead({
 <template>
   <div>
     <div class="text-center" mb-3>
-      <div i-carbon-dicom-overlay class="text-4xl mb-1 m-auto" />
+      <div i-carbon-dicom-overlay class="text-4xl mb-2 m-auto" />
       <h3 text-5 font-bold>
         About
       </h3>

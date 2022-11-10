@@ -89,8 +89,5 @@ function loginWithProvider(provider) {
       </RouterLink> zu werfen!
     </p>
   </form>
-
-  <!-- <button>Log In with Google</button>
-  <button>Log In with GitHub</button> -->
 </template>
 

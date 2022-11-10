@@ -1,16 +1,14 @@
 <script setup>
 const userStore = useUserStore()
+const router = useRouter()
+
+if (userStore.user)
+  router.push(`/user/${userStore.user.id}`)
 </script>
 
 <template>
   <div grid class="page">
     <UserLogin v-if="!userStore.user" />
-    <div v-else>
-      <div>Hello {{ userStore.user.email }}!</div>
-      <button @click="userStore.logOut">
-        Abmelden
-      </button>
-    </div>
   </div>
 </template>
 

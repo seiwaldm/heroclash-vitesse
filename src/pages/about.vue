@@ -24,12 +24,36 @@ useHead({
       </p>
 
       <ul>
-        <li>Online-Multiplayer-Modus</li>
+        <li>Online-Modus</li>
         <li>Erfahrungspunkte und Level</li>
         <li>Dashboard mit Spielstatistiken</li>
-        <li>Heroerstellungsmodus</li>
+        <li>Erstellung eigener Heroes</li>
       </ul>
       <p>Schau gelegentlich rein!</p>
+    </div>
+
+    <div class="text-center" mb-3>
+      <h3 text-5 font-bold>
+        Datenschutz
+      </h3>
+    </div>
+
+    <div mx-10 text-4 class="about">
+      <p>
+        Diese Website verwendet keine Cookies. Wir tracken unsere Besucher*innen nicht. Wir geben keine Daten über unsere Besucher*innen an Dritte weiter.
+      </p>
+      <p>Für den (geplanten) Online-Modus und für die (geplante) Erstellung von eigenen Heroes ist es notwendig, ein Konto einzurichten. Dies kann durch die Authentifizierung über eine E-Mail/Passwort-Kombination oder durch externe Authentizitäts-Provider wie z.B. Google erfolgen. In diesem Fall erhält der Authentizitäts-Provider Ihrer Wahl zusätzlichen Einblick in Ihr Surfverhalten.</p>
+    </div>
+    <div class="text-center" mb-3>
+      <h3 text-5 font-bold>
+        Nutzungsbedingungen
+      </h3>
+    </div>
+
+    <div mx-10 text-4 class="about">
+      <p>
+        Mit der Nutzung dieser Web-Applikation sind keine weiteren Bedingungen verbunden. Der Administrator behält sich vor, jegliche durch Benutzer*innen erstellte, diskriminierende Inhalte zu löschen. Bei strafrechtlich relevanten Verstößen werden diese zur Anzeige gebracht.
+      </p>
     </div>
   </div>
 </template>

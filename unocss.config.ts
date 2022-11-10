@@ -59,5 +59,12 @@ export default defineConfig({
       cursor: 'pointer',
       filter: 'drop-shadow(15px 15px 15px)',
     }],
+    ['text-red', {
+      color: 'var(--rot)',
+    }],
+    ['button', {
+      'border-width': '1px',
+      'padding': '0.25rem 0.5rem',
+    }],
   ],
 })

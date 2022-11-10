@@ -3,7 +3,7 @@ const userStore = useUserStore()
 </script>
 
 <template>
-  <div>
+  <div grid class="page">
     <UserLogin v-if="!userStore.user" />
     <div v-else>
       <div>Hello {{ userStore.user.email }}!</div>
@@ -13,3 +13,9 @@ const userStore = useUserStore()
     </div>
   </div>
 </template>
+
+<style scoped>
+.page{
+  width: min-content;
+}
+</style>

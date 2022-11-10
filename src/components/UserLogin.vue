@@ -13,16 +13,12 @@ const redirectUrl = ref('https://heroclash.seiwald.club/auth')
 // const redirectUrl = ref('http://localhost:3333/auth')
 
 const inputType = ref('password')
-const icon = ref('carbon-view')
 function toggleInputType() {
-  if (inputType.value === 'password') {
+  if (inputType.value === 'password')
     inputType.value = 'text'
-    icon.value = 'carbon-view-off'
-  }
-  else {
+
+  else
     inputType.value = 'password'
-    icon.value = 'carbon-view'
-  }
 }
 
 function providerUrl(providerName) {
@@ -46,7 +42,8 @@ function loginWithProvider(provider) {
     <div flex gap-3 justify-between w="100%" items-center relative>
       <label for="password">Passwort</label>
       <input id="password" v-model="password" w="20ch" b-1 :type="inputType" name="password">
-      <button i-carbon-view absolute right="0.5rem" @click="toggleInputType" />
+      <button v-if="inputType === 'password'" i-carbon-view absolute right="0.5rem" @click="toggleInputType" />
+      <button v-else i-carbon-view-off absolute right="0.5rem" @click="toggleInputType" />
     </div>
     <div v-if="register" flex gap-3 justify-between items-end w="100%">
       <label for="passwordRepeat" text-left>Passwort<br>wiederholen</label>
@@ -63,7 +60,7 @@ function loginWithProvider(provider) {
       </button>
     </div>
     <div v-if="register" flex flex-col w="100%">
-      <button self-end @click.prevent="userStore.register(email, password, passwordRepeat)">
+      <button class="button" self-end @click.prevent="userStore.register(email, password, passwordRepeat)">
         Registrieren
       </button>
       <ul text-red my-3>
@@ -78,7 +75,7 @@ function loginWithProvider(provider) {
     <div v-if="!register" self-center>
       oder
     </div>
-    <div v-if="userStore.providers" flex flex-col gap-3 w="100%">
+    <div flex flex-col gap-3 w="100%">
       <button v-if="!register" class="button" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
         Anmelden mit Google <div i-ant-design-google-outlined inline text-6 />
       </button>
@@ -86,15 +83,14 @@ function loginWithProvider(provider) {
         Anmelden mit GitHub <div i-carbon-logo-github inline text-6 />
       </button>
     </div>
+    <p mt-5 text-3>
+      Vergiss nicht, einen Blick auf die <RouterLink to="/about" underline>
+        Nutzungsbedingungen und Datenschutzerklärung
+      </RouterLink> zu werfen!
+    </p>
   </form>
 
   <!-- <button>Log In with Google</button>
   <button>Log In with GitHub</button> -->
 </template>
 
-<style scoped>
-.button {
-    border-width: 1px;
-    padding: 0.25rem 0.5rem;
-}
-</style>

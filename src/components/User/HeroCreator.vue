@@ -7,6 +7,6 @@ function toggleImageLoader() {
 
 <template>
   <div>
-    <ImageCropper />
+    <CustomCropper max-w="90vw" />
   </div>
 </template>

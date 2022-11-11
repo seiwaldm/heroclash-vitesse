@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CustomCropper: typeof import('./components/User/CustomCropper.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     GameScore: typeof import('./components/GameScore.vue')['default']
     GameScreen: typeof import('./components/GameScreen.vue')['default']

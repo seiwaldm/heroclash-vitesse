@@ -42,7 +42,8 @@ async function uploadImage() {
 </script>
 
 <template>
-  <div>
+  <div flex flex-col gap-3>
+    <h2>Hero-Image</h2>
     <input type="file" accept=".jpg,.jpeg,.png,.webp" @change="loadFile">
     <Cropper
       class="cropper"

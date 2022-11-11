@@ -14,6 +14,11 @@
   src: url(/comic-kings.otf);
 }
 
+@font-face {
+  font-family:roboto-medium;
+  src: url(/Roboto-Medium.ttf);
+}
+
 :root {
   --tuerkis: #80ccdb;
   --blau: #005577;

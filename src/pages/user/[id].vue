@@ -18,6 +18,7 @@ function logOut() {
     <button button @click="logOut">
       Abmelden
     </button>
+    <!-- <HeroCreator /> -->
   </div>
   <div v-else>
     <LoadingSpinner w="100px" message="Loading..." />

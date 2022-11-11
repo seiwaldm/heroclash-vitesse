@@ -75,12 +75,11 @@ function loginWithProvider(provider) {
     <div v-if="!register" self-center>
       oder
     </div>
-    <div flex flex-col gap-3 w="100%">
-      <button v-if="!register" class="button" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('google')">
-        Anmelden mit Google <div i-ant-design-google-outlined inline text-6 />
-      </button>
-      <button v-if="!register" class="button" self-stretch flex justify-center items-center gap-3 @click="loginWithProvider('github')">
-        Anmelden mit GitHub <div i-carbon-logo-github inline text-6 />
+    <div v-if="!register" flex flex-col gap-3 items-center w="100%">
+      <img src="/btn_google_signin_light_normal_web.png" h="40px" hover:cursor-pointer @click.prevent="loginWithProvider('google')">
+
+      <button class="button github" flex justify-between items-center h="37px" w="160px" color="#757575" @click.prevent="loginWithProvider('github')">
+        <div i-carbon-logo-github inline text-4 text-black />Sign in with GitHub
       </button>
     </div>
     <p mt-5 text-3>
@@ -91,3 +90,14 @@ function loginWithProvider(provider) {
   </form>
 </template>
 
+<style scoped>
+.github{
+  font-size: 12.5px;
+  font-family: roboto-medium;
+  border-radius: 2px;
+  border-width: 0px;
+  /* box-shadow: 0 1px rgba(0, 0, 0, 0.2); */
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+  background-color: #fff;
+}
+</style>

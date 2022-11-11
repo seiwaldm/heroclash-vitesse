@@ -78,7 +78,7 @@ function loginWithProvider(provider) {
     <div v-if="!register" flex flex-col gap-3 items-center w="100%">
       <img src="/btn_google_signin_light_normal_web.png" h="40px" hover:cursor-pointer @click.prevent="loginWithProvider('google')">
 
-      <button class="button github" flex justify-between items-center h="37px" w="160px" color="#757575" @click.prevent="loginWithProvider('github')">
+      <button class="button github" flex justify-between items-center h="35px" w="160px" color="#757575" @click.prevent="loginWithProvider('github')">
         <div i-carbon-logo-github inline text-4 text-black />Sign in with GitHub
       </button>
     </div>

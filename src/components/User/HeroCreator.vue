@@ -35,6 +35,7 @@ async function uploadHero() {
     else
       await db.records.create('heroes', formData)
     cardsStore.loadCards()
+    emits('cancel')
   }
 }
 </script>

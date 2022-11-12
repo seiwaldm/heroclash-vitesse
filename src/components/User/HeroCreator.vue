@@ -1,53 +1,18 @@
 <script setup>
+import db from '~/database/db'
 const props = defineProps(['hero'])
+const emits = defineEmits(['cancel'])
 const imageLoader = ref(false)
+const userStore = useUserStore()
+const cardsStore = useCardsStore()
+
 function toggleImageLoader() {
   imageLoader.value = !imageLoader.value
 }
 
 const basePoints = 333
 
-const newHero = ref({
-  name: '',
-  id: '999',
-  powerstats: {
-    combat: 0,
-    durability: 0,
-    intelligence: 0,
-    power: 0,
-    speed: 0,
-    strength: 0,
-
-  },
-  images: {
-    md: 'images/md/no-portrait.jpg',
-  },
-  biography: {
-    aliases: '',
-    alignment: '',
-    alterEgos: '',
-    firstAppearance: '',
-    fullName: '',
-    placeOfBirth: '',
-    publisher: '',
-  },
-  connections: {
-    groupAffiliation: '',
-    relatives: '',
-  },
-  work: {
-    base: '',
-    occupation: '',
-  },
-  appearance: {
-    eyeColor: '',
-    gender: '',
-    hairColor: '',
-    height: '',
-    weight: '',
-    race: '',
-  },
-})
+const newHero = ref(props.hero)
 
 const remainingPoints = computed(() => {
   return basePoints - newHero.value.powerstats.combat - newHero.value.powerstats.durability - newHero.value.powerstats.intelligence - newHero.value.powerstats.power - newHero.value.powerstats.speed - newHero.value.powerstats.strength
@@ -56,12 +21,40 @@ const remainingPoints = computed(() => {
 function updateImage(image) {
   newHero.value.images.md = image
 }
+
+async function uploadHero() {
+  if (remainingPoints.value >= 0) {
+    const formData = new FormData()
+    formData.append('data', JSON.stringify(newHero.value))
+    formData.append('creator', userStore.user.profile.id)
+    const entry = await db.records.getFullList('heroes', 200, {
+      filter: `creator~"${userStore.user.profile.id}"`,
+    })
+    if (entry)
+      await db.records.update('heroes', entry[0].id, formData)
+
+    else
+      await db.records.create('heroes', formData)
+    cardsStore.loadCards()
+  }
+}
 </script>
 
 <template>
-  <div flex flex-col items-start gap-5 max-w="80vw">
-    <h1>Neuen Hero erstellen</h1>
+  <div flex flex-col items-center gap-5 max-w="80vw">
+    <h1 text-5 font-bold>
+      Neuen Hero erstellen / Hero modifizieren
+    </h1>
+
     <HeroCard :hero="newHero" self-center />
+    <div flex gap-3>
+      <button button @click="uploadHero">
+        Änderungen speichern
+      </button>
+      <button button @click="emits('cancel')">
+        Abbrechen
+      </button>
+    </div>
     <div flex justify-between gap-3>
       <label for="heroName">Name des Helden</label><input id="heroName" v-model="newHero.name" type="text">
     </div>
@@ -86,6 +79,9 @@ function updateImage(image) {
       </div>
       <div flex justify-between gap-3>
         <label for="strength">Strength</label><input id="strength" v-model="newHero.powerstats.strength" type="number" min="1" max="100">
+      </div>
+      <div v-if="remainingPoints < 0" text-red>
+        Zu viele Punkte vergeben!
       </div>
     </fieldset>
     <HeroImageCropper max-w="800px" self-center @update-image="updateImage" />

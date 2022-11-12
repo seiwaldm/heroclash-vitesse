@@ -11,7 +11,7 @@ if (userStore.user)
 
 watch(user, () => {
   if (userStore.user)
-    router.push(`/user/${userStore.user.id}`)
+    router.push(`/user/${userStore.user.profile.id}`)
 })
 </script>
 

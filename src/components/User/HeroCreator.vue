@@ -41,7 +41,7 @@ async function uploadHero() {
 </script>
 
 <template>
-  <div flex flex-col items-center gap-5 max-w="80vw">
+  <div flex flex-col items-center gap-5 max-w="80vw" text-left>
     <h1 text-5 font-bold>
       Neuen Hero erstellen / Hero modifizieren
     </h1>

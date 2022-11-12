@@ -35,7 +35,7 @@ function loadFile(e) {
 async function uploadImage() {
   const formData = new FormData()
   formData.append('heroImage', croppedImage.value)
-  formData.append('creator', userStore.user.profile.id)
+  formData.append('id', userStore.user.id)
   // upload to server
   const response = await db.records.create('heroImages', formData)
 }

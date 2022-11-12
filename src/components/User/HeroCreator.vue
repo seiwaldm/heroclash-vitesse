@@ -30,9 +30,8 @@ async function uploadHero() {
     const entry = await db.records.getFullList('heroes', 200, {
       filter: `creator~"${userStore.user.profile.id}"`,
     })
-    if (entry)
+    if (entry.length > 0)
       await db.records.update('heroes', entry[0].id, formData)
-
     else
       await db.records.create('heroes', formData)
     cardsStore.loadCards()

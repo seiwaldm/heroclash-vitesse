@@ -27,7 +27,6 @@ useHead({
         <li>Online-Modus</li>
         <li>Erfahrungspunkte und Level</li>
         <li>Dashboard mit Spielstatistiken</li>
-        <li>Erstellung eigener Heroes</li>
       </ul>
       <p>Schau gelegentlich rein!</p>
     </div>
@@ -44,7 +43,7 @@ useHead({
         Alle von uns gesammelten Daten werden in Deutschland auf einem gemieteten Server des Webhosting-Anbieters <a href="https://www.ionos.de/" underline>IONOS SE</a> gespeichert.
       </p>
       <p>
-        Für den (geplanten) Online-Modus und für die (geplante) Erstellung von eigenen Heroes ist es notwendig, ein Konto einzurichten. Dies kann durch die Authentifizierung über eine E-Mail/Passwort-Kombination oder durch externe Authentizitäts-Provider wie z.B. Google erfolgen. In diesem Fall erhält der Authentizitäts-Provider Ihrer Wahl zusätzlichen Einblick in Ihr Surfverhalten. Wir behalten uns vor, die mit den Konten verknüpften E-Mailadressen (in dosiertem Maße) für Informations- und Marketingzwecke der JOHAK zu verwenden.
+        Für den (geplanten) Online-Modus und für die Erstellung von eigenen Heroes ist es notwendig, ein Konto einzurichten. Dies kann durch die Authentifizierung über eine E-Mail/Passwort-Kombination oder durch externe Authentizitäts-Provider wie z.B. Google erfolgen. In diesem Fall erhält der Authentizitäts-Provider Ihrer Wahl zusätzlichen Einblick in Ihr Surfverhalten. Wir behalten uns vor, die mit den Konten verknüpften E-Mailadressen (in dosiertem Maße) für Informations- und Marketingzwecke der JOHAK zu verwenden.
       </p>
 
       <p>

@@ -5,7 +5,12 @@ const route = useRoute()
 const router = useRouter()
 
 const isUser = computed(() => userStore.user && userStore.user.profile.id === route.params.id)
-const currentHero = computed(() => cardStore.cards.filter(card => card.creator === route.params.id)[0].data)
+const currentHero = computed(() => {
+  const array = cardStore.cards.filter(card => card.creator === route.params.id)
+  if (array.length > 0)
+    return array[0].data
+  return null
+})
 const editHero = ref(false)
 
 function toggleEdit() {

@@ -3,8 +3,8 @@ import { Cropper } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
 import db from '~/database/db'
 
+const emits = defineEmits(['updateImage'])
 const userStore = useUserStore()
-
 const img = ref('')
 
 const coordinates = ref({
@@ -21,6 +21,7 @@ function change({ coords, canvas }) {
   canvas.toBlob((blob) => {
     croppedImage.value = blob
   })
+  emits('updateImage', canvas.toDataURL())
 }
 
 function loadFile(e) {
@@ -37,7 +38,16 @@ async function uploadImage() {
   formData.append('heroImage', croppedImage.value)
   formData.append('creator', userStore.user.profile.id)
   // upload to server
-  const response = await db.records.create('heroImages', formData)
+  const entry = await db.records.getList('heroImages', 1, 50, {
+    filter: `creator~"${userStore.user.profile.id}"`,
+  })
+  let response = null
+  if (entry.items)
+    response = await db.records.update('heroImages', entry.items[0].id, formData)
+  else
+    response = await db.records.create('heroImages', formData)
+  img.value = ''
+  emits('updateImage', `https://hcpb.seiwald.club/api/files/heroImages/${response.id}/${response.heroImage}`)
 }
 </script>
 
@@ -54,8 +64,8 @@ async function uploadImage() {
       image-restriction="stencil"
       @change="change"
     />
-    <button button @click="uploadImage">
-      Upload
+    <button v-if="img" button self-center @click="uploadImage">
+      Ausschnitt speichern
     </button>
   </div>
 </template>

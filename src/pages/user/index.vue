@@ -7,7 +7,7 @@ const router = useRouter()
 const { user } = storeToRefs(userStore)
 
 if (userStore.user)
-  router.push(`/user/${userStore.user.id}`)
+  router.push(`/user/${userStore.user.profile.id}`)
 
 watch(user, () => {
   if (userStore.user)

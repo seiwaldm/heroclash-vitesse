@@ -49,3 +49,8 @@ function updateCounter(event) {
   </div>
 </template>
 
+<style scoped>
+input {
+  border: none
+}
+</style>

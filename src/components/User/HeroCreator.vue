@@ -84,7 +84,7 @@ async function uploadHero() {
         Zu viele Punkte vergeben!
       </div>
     </fieldset>
-    <HeroImageCropper max-w="800px" self-center @update-image="updateImage" />
+    <HeroImageCropper max-w="80vw" self-center @update-image="updateImage" />
     <fieldset b="1" w="100%" p-3 flex flex-col justify-between gap-1>
       <legend>
         Appearance

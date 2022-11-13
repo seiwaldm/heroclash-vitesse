@@ -45,7 +45,7 @@ function logOut() {
     <HeroCreator
       v-if="editHero || !currentHero" :hero="currentHero ? currentHero : {
         name: '',
-        id: `${cardStore.cards[length - 1].data.id + 1}`,
+        id: `${cardStore.cards[cardStore.cards.length - 1].data.id + 1}`,
         powerstats: {
           combat: 0,
           durability: 0,

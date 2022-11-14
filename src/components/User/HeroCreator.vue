@@ -18,12 +18,16 @@ const remainingPoints = computed(() => {
   return basePoints - newHero.value.powerstats.combat - newHero.value.powerstats.durability - newHero.value.powerstats.intelligence - newHero.value.powerstats.power - newHero.value.powerstats.speed - newHero.value.powerstats.strength
 })
 
+const pointsInRange = computed(() => {
+  return Object.values(newHero.value.powerstats).filter(stat => stat > 100 || stat < 0).length === 0
+})
+
 function updateImage(image) {
   newHero.value.images.md = image
 }
 
 async function uploadHero() {
-  if (remainingPoints.value >= 0) {
+  if (remainingPoints.value >= 0 && pointsInRange.value) {
     const formData = new FormData()
     formData.append('data', JSON.stringify(newHero.value))
     formData.append('creator', userStore.user.profile.id)
@@ -82,6 +86,9 @@ async function uploadHero() {
       </div>
       <div v-if="remainingPoints < 0" text-red>
         Zu viele Punkte vergeben!
+      </div>
+      <div v-if="!pointsInRange" text-red>
+        Punkte müssen zwischen 0 und 100 liegen!
       </div>
     </fieldset>
     <HeroImageCropper max-w="80vw" self-center @update-image="updateImage" />

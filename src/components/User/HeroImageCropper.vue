@@ -53,6 +53,9 @@ async function uploadImage() {
 <template>
   <div flex flex-col gap-3>
     <h2>Hero-Image</h2>
+    <button v-if="img" button self-center @click="uploadImage">
+      Ausschnitt speichern
+    </button>
     <input type="file" accept=".jpg,.jpeg,.png,.webp" @change="loadFile">
     <Cropper
       class="cropper"
@@ -63,8 +66,5 @@ async function uploadImage() {
       image-restriction="stencil"
       @change="change"
     />
-    <button v-if="img" button self-center @click="uploadImage">
-      Ausschnitt speichern
-    </button>
   </div>
 </template>

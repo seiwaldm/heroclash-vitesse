@@ -21,7 +21,6 @@ function change({ coords, canvas }) {
   canvas.toBlob((blob) => {
     croppedImage.value = blob
   })
-  emits('updateImage', canvas.toDataURL())
 }
 
 function loadFile(e) {
@@ -42,9 +41,8 @@ async function uploadImage() {
     filter: `creator~"${userStore.user.profile.id}"`,
   })
   let response = null
-  console.log(entry)
-  if (entry.items)
-    response = await db.records.update('heroImages', entry.items[0].id, formData)
+  if (entry.length > 0)
+    response = await db.records.update('heroImages', entry[0].id, formData)
   else
     response = await db.records.create('heroImages', formData)
   img.value = ''

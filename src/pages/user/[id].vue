@@ -81,7 +81,7 @@ function logOut() {
           hairColor: '',
           height: '',
           weight: '',
-          race: '',
+          species: '',
         },
       }" @cancel="toggleEdit"
     />

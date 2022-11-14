@@ -112,7 +112,7 @@ async function uploadHero() {
         <label for="weight">Weight (lbs/kg)</label><input id="weight" v-model="newHero.appearance.weight" type="text">
       </div>
       <div flex justify-between gap-3>
-        <label for="race">Race</label><input id="race" v-model="newHero.appearance.race" type="text">
+        <label for="species">Species</label><input id="species" v-model="newHero.appearance.species" type="text">
       </div>
     </fieldset>
     <fieldset b="1" w="100%" p-3 flex flex-col justify-between gap-1>

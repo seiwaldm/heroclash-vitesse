@@ -38,10 +38,11 @@ async function uploadImage() {
   formData.append('heroImage', croppedImage.value)
   formData.append('creator', userStore.user.profile.id)
   // upload to server
-  const entry = await db.records.getList('heroImages', 1, 50, {
+  const entry = await db.records.getFullList('heroImages', 200, {
     filter: `creator~"${userStore.user.profile.id}"`,
   })
   let response = null
+  console.log(entry)
   if (entry.items)
     response = await db.records.update('heroImages', entry.items[0].id, formData)
   else

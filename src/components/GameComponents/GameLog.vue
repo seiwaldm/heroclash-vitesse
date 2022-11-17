@@ -1,7 +1,7 @@
 <script setup>
 import Vue3DraggableResizable from 'vue3-draggable-resizable'
 // default styles
-import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+// import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
 
 const props = defineProps(['log'])
 const emits = defineEmits(['close'])

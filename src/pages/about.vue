@@ -20,7 +20,7 @@ useHead({
         Heroclash wurde ausschließlich mit Technologien erstellt, die wir an der <a href="https://www.johak.at/" target="_blank" underline>JOHAK</a> im IT-Schwerpunkt lehren. Das Spiel läuft im Browser, kann aber als Progressive Web App sowohl am Desktop als auch auf Smartphones installiert werden (getestet mit installiertem Chrome Browser). Das für die Spieler*innen ersichtliche Frontend wurde mit dem Javascript-Framework <a href="https://vuejs.org/" target="_blank" underline>Vue</a> erstellt. Die notwendigen Backend-Funktionen (Datenbank, Authentifizierung und Dateiupload) werden über eine auf eigenen Servern gehostete <a href="https://pocketbase.io/" target="_blank" underline>Pocketbase</a>-Installation zur Verfügung gestellt.
       </p>
       <p>
-        Heroclash ist Work In Progress. Geplante Features sind unter anderem:
+        Der Quellcode für Heroclash ist auf <a href="https://github.com/seiwaldm/heroclash-vitesse" target="_blank" underline>GitHub</a> verfügbar. Das Spiel ist Work In Progress. Geplante Features sind unter anderem:
       </p>
 
       <ul>

@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 import { Game } from '~/heroclash/heroclash.js'
-
 export const useLocalGameStore = defineStore(
   'localGame',
   () => {
@@ -12,19 +11,11 @@ export const useLocalGameStore = defineStore(
       localGame.value = new Game(mode, baseDeck, deckSize, playerCount, playerIds)
     }
 
-    function handleCombat(discipline) {
-      Game.handleCombat(discipline, localGame.value)
-    }
-
-    function chooseDiscipline(player) {
-      return Game.chooseDiscipline(player)
-    }
-
     function resetGame() {
       localGame.value = {}
     }
 
-    return { localGame, createLocalGame, handleCombat, resetGame, chooseDiscipline }
+    return { localGame, createLocalGame, resetGame }
   },
   {
     persist: true,

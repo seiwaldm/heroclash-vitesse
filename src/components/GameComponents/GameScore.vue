@@ -1,4 +1,5 @@
 <script setup>
+const emits = defineEmits(['showLog'])
 const localGameStore = useLocalGameStore()
 </script>
 
@@ -12,8 +13,8 @@ const localGameStore = useLocalGameStore()
       </div>
       <PlayerScore :name="localGameStore.localGame.players[1].name" :score="localGameStore.localGame.players[1].deck.length" />
     </div>
-    <!-- <button button>
+    <button button @click="emits('showLog')">
       Show Log
-    </button> -->
+    </button>
   </div>
 </template>

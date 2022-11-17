@@ -51,7 +51,7 @@ onMounted(botTurn)
   <div flex flex-col justify-center>
     <div v-if="game.running" flex flex-col lg:flex-row items-center gap-13>
       <HeroCard :class="{ turned: !visible1 && !game.players[0].initiative, duellView: settingsStore.settings.duellView }" transition-transform :hero="game.players[0].deck[0]" @discipline="handleCombat" />
-      <GameScore :mode="props.mode" />
+      <GameScore :mode="props.mode" @show-log="showLog = true" />
       <HeroCard :class="{ turned: !visible2 && !game.players[1].initiative }" :hero="game.players[1].deck[0]" @discipline="handleCombat" />
     </div>
     <div v-else hc-font-style action-comics text-10 flex flex-col gap-6>
@@ -67,7 +67,7 @@ onMounted(botTurn)
         <div text-7 i="carbon-arrows-vertical" lg:hidden />
       </button>
     </div>
-    <GameLog v-if="showLog" />
+    <GameLog v-if="showLog" :log="game.gameLog" @close="showLog = false" />
   </div>
 </template>
 

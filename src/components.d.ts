@@ -7,7 +7,6 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    CustomCropper: typeof import('./components/User/HeroImageCropper.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     GameLog: typeof import('./components/GameComponents/GameLog.vue')['default']
     GameScore: typeof import('./components/GameComponents/GameScore.vue')['default']
@@ -19,7 +18,6 @@ declare module '@vue/runtime-core' {
     HeroImageCropper: typeof import('./components/User/HeroImageCropper.vue')['default']
     HeroModal: typeof import('./components/HeroCard/HeroModal.vue')['default']
     HeroStats: typeof import('./components/HeroCard/HeroStats.vue')['default']
-    ImageCropper: typeof import('./components/User/ImageCropper.vue')['default']
     JohakAnimation: typeof import('./components/UI/JohakAnimation.vue')['default']
     LoadingSpinner: typeof import('./components/UI/LoadingSpinner.vue')['default']
     PlayerScore: typeof import('./components/GameComponents/PlayerScore.vue')['default']

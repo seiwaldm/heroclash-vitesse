@@ -48,7 +48,7 @@ specifiers:
   vue-i18n: ^9.2.2
   vue-router: ^4.1.5
   vue-tsc: ^1.0.0
-  vue3-draggable-resizable: ^1.6.5
+  vue3-drag-resize: ^2.0.5
 
 dependencies:
   '@unocss/reset': 0.45.28
@@ -63,7 +63,7 @@ dependencies:
   vue-demi: 0.13.11_vue@3.2.40
   vue-i18n: 9.2.2_vue@3.2.40
   vue-router: 4.1.5_vue@3.2.40
-  vue3-draggable-resizable: 1.6.5
+  vue3-drag-resize: 2.0.5
 
 devDependencies:
   '@antfu/eslint-config': 0.27.0_z4bbprzjrhnsfa24uvmcbu7f5q
@@ -8365,8 +8365,8 @@ packages:
       '@vue/server-renderer': 3.2.40_vue@3.2.40
       '@vue/shared': 3.2.40
 
-  /vue3-draggable-resizable/1.6.5:
-    resolution: {integrity: sha512-31142E31fGNnq3HKqvmFLSsqIbhck7TyGuQWhUKrDw6DOcGAuRx4ddRjaxvT6fe7dgeKH53qAh+i0ZlWtPLl2g==}
+  /vue3-drag-resize/2.0.5:
+    resolution: {integrity: sha512-7ein6vCC9LN6fsO3o9mYgmoldU9c/O2oyw9U5cqAJP21Mj2yQ8OGNPzEZfen6QltgLMfAOXv4iPIdE0EXFezGA==}
     dev: false
 
   /w3c-xmlserializer/3.0.0:

@@ -1,7 +1,5 @@
 <script setup>
-import Vue3DraggableResizable from 'vue3-draggable-resizable'
-// default styles
-// import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
+import VueDragResize from 'vue3-drag-resize'
 
 const props = defineProps(['log'])
 const emits = defineEmits(['close'])
@@ -26,7 +24,7 @@ function icon(discipline) {
 
 <template>
   <div>
-    <Vue3DraggableResizable :init-h="250" rounded-1 p-2 class="container" relative m-auto>
+    <VueDragResize rounded-1 p-2 :w="400" class="container">
       <div absolute right="3" top="1" cursor-pointer @click="emits('close')">
         X
       </div>
@@ -34,9 +32,9 @@ function icon(discipline) {
         <div text-5>
           Game Log
         </div>
-        <div v-for="(entry, index) in log" :key="index" class="log" w="100%">
+        <div v-for="(entry, index) in log" :key="index" class="log" w="100%" my-3>
           <div flex gap-5 items-center justify-between w="100%">
-            <div>Round {{ index + 1 }}</div>
+            <div>{{ index + 1 }}</div>
             <div flex gap-2 items-center justify-center w="100%">
               <div>{{ entry.hero1 }} </div>
               <div>{{ entry.value1 }}</div>
@@ -49,7 +47,7 @@ function icon(discipline) {
           </div>
         </div>
       </div>
-    </Vue3DraggableResizable>
+    </VueDragResize>
   </div>
 </template>
 

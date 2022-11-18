@@ -43,7 +43,7 @@ function updateUserName() {
 
 <style scoped>
 .profilePic {
-    max-width: 150px;
+    max-width: 130px;
     min-width: 100px;
     aspect-ratio: 1;
     border-radius: 50%;

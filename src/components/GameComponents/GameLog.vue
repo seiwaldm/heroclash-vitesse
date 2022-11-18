@@ -1,6 +1,4 @@
 <script setup>
-import VueDragResize from 'vue3-drag-resize'
-
 const props = defineProps(['log'])
 const emits = defineEmits(['close'])
 
@@ -24,21 +22,21 @@ function icon(discipline) {
 
 <template>
   <div>
-    <VueDragResize rounded-1 p-2 :w="400" class="container">
+    <DragResize rounded-1 p-2 :w="400" class="container" z-10>
       <div absolute right="3" top="1" cursor-pointer @click="emits('close')">
         X
       </div>
-      <div flex flex-col items-center overflow-auto max-h="100%">
-        <div text-5>
-          Game Log
-        </div>
+      <div text-5>
+        Game Log
+      </div>
+      <div flex flex-col items-center max-h="85%" overflow-auto>
         <div v-for="(entry, index) in log" :key="index" class="log" w="100%" my-3>
-          <div flex gap-5 items-center justify-between w="100%">
+          <div flex gap-4 items-center justify-between w="100%">
             <div>{{ index + 1 }}</div>
             <div flex gap-2 items-center justify-center w="100%">
               <div>{{ entry.hero1 }} </div>
               <div>{{ entry.value1 }}</div>
-              <div :class="icon(entry.discipline)" mx-3 />
+              <div :class="icon(entry.discipline)" mx-2 />
               <div>
                 {{ entry.value2 }}
               </div>
@@ -47,7 +45,7 @@ function icon(discipline) {
           </div>
         </div>
       </div>
-    </VueDragResize>
+    </DragResize>
   </div>
 </template>
 

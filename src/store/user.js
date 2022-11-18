@@ -37,7 +37,12 @@ export const useUserStore = defineStore('user', () => {
     providers.value = data.authProviders
   }
 
-  return { user, logIn, register, logOut, providers, listAuthProviders, providerName }
+  async function updateUserName(name) {
+    const data = await db.records.update('profiles', user.value.profile.id, { name })
+    user.value = await db.users.getOne(user.value.id)
+  }
+
+  return { user, logIn, register, logOut, providers, listAuthProviders, providerName, updateUserName }
 },
 {
   persist: true,

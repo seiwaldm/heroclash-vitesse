@@ -28,5 +28,6 @@ declare module '@vue/runtime-core' {
     SimpleSelector: typeof import('./components/UI/SimpleSelector.vue')['default']
     StatField: typeof import('./components/HeroCard/StatField.vue')['default']
     UserLogin: typeof import('./components/User/UserLogin.vue')['default']
+    UserProfile: typeof import('./components/User/UserProfile.vue')['default']
   }
 }

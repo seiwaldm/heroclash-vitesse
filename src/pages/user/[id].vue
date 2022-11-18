@@ -16,23 +16,11 @@ const editHero = ref(false)
 function toggleEdit() {
   editHero.value = !editHero.value
 }
-
-function logOut() {
-  userStore.user = null
-  router.push('/')
-}
 </script>
 
 <template>
-  <div v-if="isUser" flex flex-col items-center gap-3>
-    <div>
-      <div>Hello {{ userStore.user.profile.id }}!</div>
-      <div>{{ route.params.id }}</div>
-      <button button @click="logOut">
-        Abmelden
-      </button>
-    </div>
-
+  <div v-if="isUser" flex flex-col items-center gap-10>
+    <UserProfile />
     <div v-if="currentHero && !editHero" flex flex-col gap-5 items-center>
       <h1 text-5 font-bold>
         Das ist dein Hero

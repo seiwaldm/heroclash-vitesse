@@ -19,7 +19,7 @@ function updateUserName() {
 <template>
   <div grid class="profile" gap-4 items-center>
     <div class="profilePic" b-1 overflow-hidden>
-      <img :src="userStore.user.profile.avatar ? userStore.user.profile.avatar : `https://robohash.org/${userStore.user.profile.id}`" alt="Profile Pic">
+      <img :src="userStore.user.profile.avatar ? userStore.user.profile.avatar : `https://robohash.org/${userStore.user.profile.id}?set=set4`" alt="Profile Pic">
     </div>
     <div flex flex-col items-start gap-2>
       <div text-5 font-bold flex gap-2 items-center flex-wrap>

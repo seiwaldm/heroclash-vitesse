@@ -10,18 +10,27 @@ onMounted(() => {
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
-  title: 'Heroclash',
+  title: 'Heroclash - developed at JOHAK',
   meta: [
-    { name: 'description', content: 'A Card Game developed at JOHAK' },
-    {
-      name: 'theme-color',
-      content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
-    },
+    { name: 'title', content: 'Heroclash - developed at JOHAK' },
+    { name: 'description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deine eigenen Hero!' },
+
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://heroclash.seiwald.club' },
     { property: 'og:title', content: 'Heroclash - developed at JOHAK' },
     { property: 'og:description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deinen eigenen Hero!' },
     { property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+
+    { property: 'twitter:card', content: 'summary_large_image' },
+    { property: 'twitter:url', content: 'https://heroclash.seiwald.club' },
+    { property: 'twitter:title', content: 'Heroclash - developed at JOHAK' },
+    { property: 'twitter:description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deinen eigenen Hero!' },
+    { property: 'twitter:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+
+    {
+      name: 'theme-color',
+      content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
+    },
 
   ],
   link: [

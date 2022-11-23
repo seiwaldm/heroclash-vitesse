@@ -16,16 +16,16 @@ useHead({
     { name: 'description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deine eigenen Hero!' },
 
     { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://heroclash.seiwald.club/menu' },
+    { property: 'og:url', content: 'https://heroclash.seiwald.club' },
     { property: 'og:title', content: 'Heroclash - developed at JOHAK' },
     { property: 'og:description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deinen eigenen Hero!' },
-    { property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+    { property: 'og:image', content: 'https://heroclash.seiwald.clubheroclash-logo-social.png' },
 
     { property: 'twitter:card', content: 'summary_large_image' },
-    { property: 'twitter:url', content: 'https://heroclash.seiwald.club/menu' },
+    { property: 'twitter:url', content: 'https://heroclash.seiwald.clubmenu' },
     { property: 'twitter:title', content: 'Heroclash - developed at JOHAK' },
     { property: 'twitter:description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deinen eigenen Hero!' },
-    { property: 'twitter:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+    { property: 'twitter:image', content: 'https://heroclash.seiwald.club/heroclash-logo-social.png' },
 
     {
       name: 'theme-color',

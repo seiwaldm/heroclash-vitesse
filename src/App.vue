@@ -17,6 +17,11 @@ useHead({
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
     },
+    { property: 'og:title', content: 'Heroclash' },
+    { property: 'og:description', content: 'A Card Game developed at JOHAK' },
+    { property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+    { property: 'og:url', content: 'https://heroclash.seiwald.club' },
+    { property: 'og:type', content: 'website' },
   ],
   link: [
     {

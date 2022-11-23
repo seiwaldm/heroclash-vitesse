@@ -17,12 +17,11 @@ useHead({
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
     },
-    { name: 'twitter:title', property: 'og:title', content: 'Heroclash' },
-    { name: 'twitter:description', property: 'og:description', content: 'A Card Game developed at JOHAK' },
-    { name: 'twitter:image', property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
-    { name: 'twitter:url', property: 'og:url', content: 'https://heroclash.seiwald.club' },
+    { property: 'og:title', content: 'Heroclash' },
+    { property: 'og:description', content: 'A Card Game developed at JOHAK' },
+    { property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+    { property: 'og:url', content: 'https://heroclash.seiwald.club' },
     { property: 'og:type', content: 'website' },
-    { name: 'twitter:card', content: 'summary_large_image' },
   ],
   link: [
     {

@@ -17,11 +17,12 @@ useHead({
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
     },
-    { property: 'og:title', content: 'Heroclash' },
-    { property: 'og:description', content: 'A Card Game developed at JOHAK' },
-    { property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
-    { property: 'og:url', content: 'https://heroclash.seiwald.club' },
     { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://heroclash.seiwald.club' },
+    { property: 'og:title', content: 'Heroclash - developed at JOHAK' },
+    { property: 'og:description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deinen eigenen Hero!' },
+    { property: 'og:image', content: 'https://heroclash.seiwald.club/heroclash-logo.png' },
+
   ],
   link: [
     {

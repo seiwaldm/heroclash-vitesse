@@ -13,7 +13,7 @@ useHead({
   title: 'Heroclash - developed at JOHAK',
   meta: [
     { name: 'title', content: 'Heroclash - developed at JOHAK' },
-    { name: 'description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deine eigenen Hero!' },
+    { name: 'description', content: 'Ein digitales Supertrumpf-Kartenspiel - sei dabei und erstelle deinen eigenen Hero!' },
 
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: 'https://heroclash.seiwald.club' },

@@ -3,6 +3,8 @@ const userStore = useUserStore()
 const cardStore = useCardsStore()
 const route = useRoute()
 const router = useRouter()
+const danger = ref(false)
+const sayonara = ref('')
 
 const isUser = computed(() => userStore.user && userStore.user.profile.id === route.params.id)
 const currentHero = computed(() => {
@@ -15,6 +17,14 @@ const editHero = ref(false)
 
 function toggleEdit() {
   editHero.value = !editHero.value
+}
+
+function deleteUser() {
+  if (sayonara.value === 'sayonara') {
+    userStore.deleteUser()
+    userStore.logOut()
+    router.push('/')
+  }
 }
 </script>
 
@@ -73,6 +83,21 @@ function toggleEdit() {
         },
       }" @cancel="toggleEdit"
     />
+    <div v-if="!danger" button text-red b-red @click="danger = true">
+      Konto löschen
+    </div>
+    <div v-if="danger" flex flex-col items-start gap-2 text-left b-1 p-3 rounded b-red>
+      <p>Willst du dein Konto wirklich löschen? <br>Gib "sayonara" in das Textfeld ein:</p>
+      <input v-model="sayonara" type="text" b-red>
+      <div flex gap-2>
+        <button button b-red text-red @click="deleteUser">
+          Konto löschen
+        </button>
+        <button button @click="danger = false">
+          Abbrechen
+        </button>
+      </div>
+    </div>
   </div>
   <div v-else>
     <LoadingSpinner w="100px" message="Loading..." />

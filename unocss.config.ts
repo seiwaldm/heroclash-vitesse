@@ -62,9 +62,13 @@ export default defineConfig({
     ['text-red', {
       color: 'var(--rot)',
     }],
+    ['b-red', {
+      'border-color': 'var(--rot)',
+    }],
     ['button', {
       'border-width': '1px',
       'padding': '0.25rem 0.5rem',
+      'cursor': 'pointer',
     }],
   ],
 })

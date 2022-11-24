@@ -27,6 +27,10 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
+  async function deleteUser() {
+    console.log(await db.users.delete(user.value.id))
+  }
+
   async function logOut() {
     db.authStore.clear()
     user.value = null
@@ -42,7 +46,7 @@ export const useUserStore = defineStore('user', () => {
     user.value = await db.users.getOne(user.value.id)
   }
 
-  return { user, logIn, register, logOut, providers, listAuthProviders, providerName, updateUserName }
+  return { user, logIn, register, logOut, providers, listAuthProviders, providerName, updateUserName, deleteUser }
 },
 {
   persist: true,

@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DragResize: typeof import('./components/UI/DragResize.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    GameCreator: typeof import('./components/GameComponents/GameCreator.vue')['default']
     GameLog: typeof import('./components/GameComponents/GameLog.vue')['default']
     GameScore: typeof import('./components/GameComponents/GameScore.vue')['default']
     GameScreen: typeof import('./components/GameComponents/GameScreen.vue')['default']

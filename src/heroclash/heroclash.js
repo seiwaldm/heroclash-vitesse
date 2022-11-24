@@ -118,11 +118,12 @@ export class Game {
   }
 }
 class Player {
-  constructor(name) {
+  constructor(name, id = 999) {
     this.name = name
     this.deck = []
     this.initiative = true
     this.bot = false
+    this.id = id
   }
 }
 

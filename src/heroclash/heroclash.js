@@ -50,32 +50,29 @@ export class Game {
     const hero2 = p2.deck[0]
 
     let winner = 0
+    game.currentDiscipline = ''
     // TODO: refactor with result from determineWinner:
     if (result > 0) {
       p1.initiative = true
       p2.initiative = false
       winner = 1
-      setTimeout(() => {
-        p1.deck.push(game.players[0].deck.shift())
-        p1.deck.push(game.players[1].deck.shift())
-        if (p1.deck.length === 0 || p2.deck.length === 0)
-          game.running = false
-        p1.deck = p1.deck.concat(game.heap)
-        game.heap.length = 0
-      }, 400)
+      p1.deck.push(game.players[0].deck.shift())
+      p1.deck.push(game.players[1].deck.shift())
+      if (p1.deck.length === 0 || p2.deck.length === 0)
+        game.running = false
+      p1.deck = p1.deck.concat(game.heap)
+      game.heap.length = 0
     }
     else if (result < 0) {
       p1.initiative = false
       p2.initiative = true
       winner = 2
-      setTimeout(() => {
-        p2.deck.push(game.players[0].deck.shift())
-        p2.deck.push(game.players[1].deck.shift())
-        if (p1.deck.length === 0 || p2.deck.length === 0)
-          game.running = false
-        p2.deck = p2.deck.concat(game.heap)
-        game.heap.length = 0
-      }, 400)
+      p2.deck.push(game.players[0].deck.shift())
+      p2.deck.push(game.players[1].deck.shift())
+      if (p1.deck.length === 0 || p2.deck.length === 0)
+        game.running = false
+      p2.deck = p2.deck.concat(game.heap)
+      game.heap.length = 0
     }
     else {
       if (p1.initiative === true) {
@@ -86,16 +83,14 @@ export class Game {
         p1.initiative = true
         p2.initiative = false
       }
-      setTimeout(() => {
-        game.heap.push(p1.deck.shift())
-        game.heap.push(p1.deck.shift())
-        if (p1.deck.length === 0 || p2.deck.length === 0)
-          game.running = false
-        game.heap.push(p2.deck.shift())
-        game.heap.push(p2.deck.shift())
-        if (p1.deck.length === 0 || p2.deck.length === 0)
-          game.running = false
-      }, 400)
+      game.heap.push(p1.deck.shift())
+      game.heap.push(p1.deck.shift())
+      if (p1.deck.length === 0 || p2.deck.length === 0)
+        game.running = false
+      game.heap.push(p2.deck.shift())
+      game.heap.push(p2.deck.shift())
+      if (p1.deck.length === 0 || p2.deck.length === 0)
+        game.running = false
     }
     game.gameLog.push({
       hero1: hero1.name,
@@ -105,7 +100,6 @@ export class Game {
       value2: stats2[discipline],
       winner,
     })
-    game.currentDiscipline = ''
   }
 
   static chooseDiscipline(player) {

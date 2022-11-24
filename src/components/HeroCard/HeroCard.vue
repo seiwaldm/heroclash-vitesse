@@ -50,6 +50,7 @@ function discipline(name) {
 
 .turned .flip-card-inner {
   transform: rotateY(180deg);
+  transition: transform 0s;
 }
 .flip-card-front {
   display: grid;

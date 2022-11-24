@@ -2,7 +2,6 @@
 import { Game } from '~/heroclash/heroclash.js'
 import db from '~/database/db.js'
 
-const props = defineProps(['mode'])
 const bgColor = computed(() => isDark.value ? '#121212' : '#ffffff')
 const visible1 = ref(false)
 const visible2 = ref(false)
@@ -12,6 +11,7 @@ const route = useRoute()
 const settingsStore = useSettingsStore()
 
 const localGameStore = useLocalGameStore()
+const userStore = useUserStore()
 
 const game = ref(null)
 const winner = computed(() => game.value.players[0].deck.length > 0 ? game.value.players[0].name : game.value.players[1].name)
@@ -20,11 +20,25 @@ function handleCombat(discipline) {
   game.value.currentDiscipline = discipline
   visible1.value = true
   visible2.value = true
+  if (route.path.includes('online'))
+    db.records.update('games', route.params.id, { data: game.value })
+
   setTimeout(() => {
-    Game.handleCombat(discipline, game.value)
     visible1.value = false
     visible2.value = false
+    Game.handleCombat(discipline, game.value)
+    if (route.path.includes('online'))
+      db.records.update('games', route.params.id, { data: game.value })
+    checkVisibility()
   }, 2000)
+}
+
+function checkVisibility() {
+  const thisPlayer = game.value.players.filter(player => player.id === userStore.user.profile.id)[0]
+  if (!thisPlayer.initiative) {
+    visible1.value = true
+    visible2.value = true
+  }
 }
 
 function botTurn() {
@@ -53,13 +67,14 @@ onMounted(async () => {
   }
   else {
     const response = await db.records.getOne('games', route.params.id)
-    game.value = response.data
-    // console.log(game.value.players)
-
+    localGameStore.games[route.params.id] = response.data
+    game.value = localGameStore.games[route.params.id]
+    console.log(game.value)
     try {
       db.realtime.subscribe(`games/${route.params.id}`, (event) => {
       // console.log(event.record.data)
-        game.value = event.record.data
+        localGameStore.games[route.params.id] = event.record.data
+        game.value = localGameStore.games[route.params.id]
       })
     }
     catch (e) {

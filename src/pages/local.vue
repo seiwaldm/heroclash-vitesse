@@ -13,7 +13,7 @@ function updateDeckSize(newValue) {
 }
 
 function createGame() {
-  localGameStore.createLocalGame('local', cardsStore.cards, deckSize.value, playerCount.value)
+  localGameStore.createGame(cardsStore.cards, deckSize.value, playerCount.value)
 }
 
 onUpdated(() => {
@@ -23,7 +23,7 @@ onUpdated(() => {
 </script>
 
 <template>
-  <GameScreen v-if="localGameStore.localGame.players" mode="local" />
+  <GameScreen v-if="localGameStore.games && localGameStore.games['999']" />
   <nav v-else flex flex-col gap-5>
     <SimpleSelector name="Players" min="0" max="2" @update="updatePlayerCount" />
     <SimpleSelector name="Deck Size" init-value="10" min="1" max="250" @update="updateDeckSize" />

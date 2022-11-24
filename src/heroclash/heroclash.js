@@ -1,6 +1,6 @@
 export class Game {
-  constructor(mode, baseDeck, deckSize, playerCount = 2, playerIds = ['Player 1', 'Player 2']) {
-    this.mode = mode
+  constructor(baseDeck, deckSize, playerCount = 2, playerIds = ['Player 1', 'Player 2'], id = 999) {
+    this.id = id
     this.players = []
     this.heap = []
     this.gameLog = []

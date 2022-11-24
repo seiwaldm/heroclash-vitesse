@@ -3,19 +3,20 @@ import { ref } from 'vue'
 
 import { Game } from '~/heroclash/heroclash.js'
 export const useLocalGameStore = defineStore(
-  'localGame',
+  'games',
   () => {
-    const localGame = ref({})
+    const games = ref({})
 
-    function createLocalGame(mode, baseDeck, deckSize, playerCount = 2, playerIds = ['Player 1', 'Player 2']) {
-      localGame.value = new Game(mode, baseDeck, deckSize, playerCount, playerIds)
+    function createGame(baseDeck, deckSize, playerCount = 2, playerIds = ['Player 1', 'Player 2'], id = '999') {
+      console.log(id)
+      games.value[id] = new Game(baseDeck, deckSize, playerCount, playerIds)
     }
 
-    function resetGame() {
-      localGame.value = {}
+    function resetLocalGame() {
+      games.value['999'] = null
     }
 
-    return { localGame, createLocalGame, resetGame }
+    return { games, createGame, resetLocalGame }
   },
   {
     persist: true,

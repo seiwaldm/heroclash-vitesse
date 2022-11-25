@@ -11,18 +11,20 @@ function discipline(name) {
 </script>
 
 <template>
-  <div>
-    <div class="herocard" w="340px" border="1 gray-200 rounded-2">
-      <div class="flip-card-inner">
-        <div class="flip-card-front" overflow-hidden rounded-2>
-          <HeroImage :image-url="hero.images.md" :hero-id="hero.id" @show-biography="showBiography = true" />
-          <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" @discipline="discipline" />
+  <Transition>
+    <div>
+      <div class="herocard" w="340px" border="1 gray-200 rounded-2">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" overflow-hidden rounded-2>
+            <HeroImage :image-url="hero.images.md" :hero-id="hero.id" @show-biography="showBiography = true" />
+            <HeroStats :name="hero.name" :stats="hero.powerstats" :alignment="hero.biography.alignment" @discipline="discipline" />
+          </div>
+          <div class="flip-card-back" overflow-hidden rounded-2 />
         </div>
-        <div class="flip-card-back" overflow-hidden rounded-2 />
       </div>
+      <HeroModal v-if="showBiography && !settingsStore.settings.duellView" :hero="hero" @close="showBiography = false" />
     </div>
-    <HeroModal v-if="showBiography && !settingsStore.settings.duellView" :hero="hero" @close="showBiography = false" />
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
@@ -31,7 +33,16 @@ function discipline(name) {
     width: 340px;
     height: 240px;
 }
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
 
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -50,7 +61,7 @@ function discipline(name) {
 
 .turned .flip-card-inner {
   transform: rotateY(180deg);
-  transition: transform 0s;
+  /* transition: transform 0s; */
 }
 .flip-card-front {
   display: grid;

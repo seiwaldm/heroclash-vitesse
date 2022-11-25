@@ -26,10 +26,16 @@ function handleCombat(discipline) {
   setTimeout(() => {
     visible1.value = false
     visible2.value = false
-    Game.handleCombat(discipline, game.value)
-    if (route.path.includes('online'))
-      db.records.update('games', route.params.id, { data: game.value })
-    checkVisibility()
+    game.value.players[0].initiative = false
+    game.value.players[1].initiative = false
+    setTimeout(() => {
+      Game.handleCombat(discipline, game.value)
+      if (route.path.includes('online')) {
+        db.records.update('games', route.params.id, { data: game.value })
+        console.log('sometimes i hate linting')
+        // checkVisibility()}
+      }
+    }, 800)
   }, 2000)
 }
 

@@ -47,7 +47,7 @@ function handleCombat(discipline) {
         if (route.path.includes('online'))
           db.records.update('games', route.params.id, { data: game.value })
       }
-      , 400)
+      , 800)
     }, 1500)
   }
 }

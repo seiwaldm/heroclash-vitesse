@@ -16,6 +16,21 @@ const userStore = useUserStore()
 const game = ref(null)
 const winner = computed(() => game.value.players[0].deck.length > 0 ? game.value.players[0].name : game.value.players[1].name)
 
+const isSpectator = computed(() => {
+  if (game) {
+    if (game.id !== 999) {
+      let playerId = ''
+      if (game.value.players[0].initiative)
+        playerId = game.value.players[0].id
+      else if (game.value.players[1].initiative)
+        playerId = game.value.players[1].id
+      if (playerId !== userStore.user.profile.id)
+        return true
+    }
+  }
+  return false
+})
+
 function handleCombat(discipline) {
   game.value.currentDiscipline = discipline
   visible1.value = true
@@ -26,8 +41,6 @@ function handleCombat(discipline) {
   setTimeout(() => {
     visible1.value = false
     visible2.value = false
-    game.value.players[0].initiative = false
-    game.value.players[1].initiative = false
     setTimeout(() => {
       Game.handleCombat(discipline, game.value)
       if (route.path.includes('online')) {
@@ -64,8 +77,9 @@ onMounted(async () => {
   if (route.path === '/local') {
     game.value = localGameStore.games['999']
     botTurn()
-    watch(() => game.value.players[0].deck.length, (newVal) => {
+    watch(() => game.value.gameLog.length, (newVal) => {
       if (game.value.running) {
+        game.value.players[0].initiative ? visible1.value = true : visible2.value = true
         setTimeout(botTurn
           , 1000)
       }
@@ -94,9 +108,9 @@ onMounted(async () => {
   <div>
     <div v-if="game" flex flex-col justify-center>
       <div v-if="game.running" flex flex-col lg:flex-row items-center gap-13>
-        <HeroCard :class="{ turned: !visible1 && !game.players[0].initiative, duellView: settingsStore.settings.duellView }" transition-transform :hero="game.players[0].deck[0]" @discipline="handleCombat" />
+        <HeroCard :class="{ turned: !visible1, duellView: settingsStore.settings.duellView }" transition-transform :hero="game.players[0].deck[0]" @discipline="handleCombat" />
         <GameScore :game="game" @show-log="showLog = true" />
-        <HeroCard :class="{ turned: !visible2 && !game.players[1].initiative }" :hero="game.players[1].deck[0]" @discipline="handleCombat" />
+        <HeroCard :class="{ turned: !visible2 }" :hero="game.players[1].deck[0]" @discipline="handleCombat" />
       </div>
       <div v-else hc-font-style action-comics text-10 flex flex-col gap-6>
         <div>Game Over</div> <div text-8>

@@ -27,8 +27,8 @@ function icon(discipline) {
 <template>
   <div>
     <DragResize v-if="log" :x="20" :y="40" left-4 rounded-1 overflow-hidden :w="360" class="container" z-10>
-      <div i-carbon-close-outline text-5 absolute right-1 top-1 cursor-pointer text-light @click="emits('close')" />
-      <div text-5 font-bold class="neutral" text-light>
+      <div i-carbon-close-outline text-5 absolute right-1 top-1 cursor-pointer @click="emits('close')" />
+      <div text-5 font-bold>
         Game Log
       </div>
       <div ref="list" flex flex-col items-center max-h="80%" max-w="100%" overflow-auto gap-2 px-3 pt-3 pb-10>

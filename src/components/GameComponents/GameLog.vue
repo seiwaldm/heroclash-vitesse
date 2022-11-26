@@ -2,9 +2,6 @@
 const props = defineProps(['log'])
 const emits = defineEmits(['close'])
 const list = ref(null)
-watch (props.log, (newVal) => {
-  list.value.scrollTop = list.value.scrollTopMax
-})
 
 function icon(discipline) {
   switch (discipline) {
@@ -22,6 +19,9 @@ function icon(discipline) {
       return 'i-game-icons-plasma-bolt'
   }
 }
+const reverseLog = computed(() => {
+  return props.log.slice().reverse()
+})
 </script>
 
 <template>
@@ -31,10 +31,10 @@ function icon(discipline) {
       <div text-5 font-bold>
         Game Log
       </div>
-      <div ref="list" flex flex-col items-center max-h="80%" max-w="100%" overflow-auto gap-2 px-3 pt-3 pb-10>
-        <div v-for="(entry, index) in log" :key="index" class="log" gap-2 w="100%">
+      <div flex flex-col-reverse items-center max-h="80%" max-w="100%" overflow-auto gap-2 px-3 pt-3 scroll-smooth>
+        <div v-for="(entry, index) in reverseLog" :key="index" class="log" gap-2 w="100%">
           <div text-right>
-            {{ index + 1 }}
+            {{ reverseLog.length - index }}
           </div>
           <div class="entry" gap-2 items-center w="100%">
             <div flex gap-2 justify-end items-center>

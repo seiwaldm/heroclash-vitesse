@@ -7,9 +7,8 @@ export const useLocalGameStore = defineStore(
   () => {
     const games = ref({})
 
-    function createGame(baseDeck, deckSize, playerCount = 2, playerIds = ['Player 1', 'Player 2'], id = '999') {
-      console.log(id)
-      games.value[id] = new Game(baseDeck, deckSize, playerCount, playerIds)
+    function createGame(baseDeck, deckSize, playerCount = 2) {
+      games.value['999'] = new Game(baseDeck, deckSize, playerCount)
     }
 
     function resetLocalGame() {

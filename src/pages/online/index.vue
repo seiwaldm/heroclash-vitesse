@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
   <div>
     <div v-if="gameList.length > 0">
-      <p hc-font-style action-comics text-5>
+      <p hc-font-style action-comics text-7>
         Active Games
       </p>
       <div my="8">
@@ -41,11 +41,11 @@ onMounted(() => {
           <div>{{ game.data.players[1].name ? game.data.players[1].name : game.data.players[1].id }}</div>
         </div>
       </div>
-
-      <button hc-font-style action-comics hover:scale text-5 @click="gameCreator = true">
-        New Online Game
-      </button>
     </div>
+
+    <button hc-font-style action-comics hover:scale text-7 @click="router.push('/online/new')">
+      New Online Game
+    </button>
   </div>
 </template>
 

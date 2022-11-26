@@ -1,5 +1,5 @@
 export class Game {
-  constructor(baseDeck, deckSize, playerCount = 2, playerIds = ['Player 1', 'Player 2'], id = 999) {
+  constructor(baseDeck, deckSize, playerCount = 2, players = [{ name: 'Player1', id: '999' }, { name: 'Player 2', id: '999' }], id = 999) {
     this.id = id
     this.players = []
     this.heap = []
@@ -8,8 +8,8 @@ export class Game {
     this.currentDiscipline = ''
 
     // create players
-    this.players.push(new Player(playerIds[0]))
-    this.players.push(new Player(playerIds[1]))
+    this.players.push(new Player(players[0].name, players[0].id))
+    this.players.push(new Player(players[1].name, players[1].id))
 
     // deal cards
     const heroes = baseDeck.map(card => card.data)

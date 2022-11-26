@@ -70,5 +70,6 @@ export default defineConfig({
       'padding': '0.25rem 0.5rem',
       'cursor': 'pointer',
     }],
+    ['round', { 'border-radius': '50%' }],
   ],
 })

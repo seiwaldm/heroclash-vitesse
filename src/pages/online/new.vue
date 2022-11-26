@@ -1,0 +1,3 @@
+<template>
+  <GameCreator />
+</template>

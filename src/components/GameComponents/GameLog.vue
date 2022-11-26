@@ -63,7 +63,7 @@ const reverseLog = computed(() => {
 .container{
     background: rgba(255, 255, 255, 0.6);
     filter: drop-shadow(15px 15px 15px);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     color: #374151
 }
 

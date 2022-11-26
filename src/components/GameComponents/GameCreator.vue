@@ -42,7 +42,7 @@ async function createGame() {
         Opponent
       </h1>
       <p>
-        (choose by clicking)
+        (un/choose by clicking)
       </p>
       <Transition>
         <div v-if="!opponent.id">

@@ -1,4 +1,5 @@
 <script setup>
+import { routerKey } from 'vue-router'
 import { Game } from '~/heroclash/heroclash.js'
 import db from '~/database/db.js'
 
@@ -7,6 +8,7 @@ const visible1 = ref(false)
 const visible2 = ref(false)
 const showLog = ref(false)
 const route = useRoute()
+const router = useRouter()
 
 const settingsStore = useSettingsStore()
 
@@ -64,6 +66,11 @@ function botTurn() {
   }
 }
 
+async function deleteGame() {
+  await db.records.delete('games', route.params.id)
+  router.push('/online')
+}
+
 onMounted(async () => {
   if (route.path === '/local') {
     game.value = localGameStore.games['999']
@@ -104,7 +111,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div v-if="game" flex flex-col justify-center>
+    <div v-if="game" flex flex-col justify-center gap-4>
       <div v-if="game.running" flex flex-col lg:flex-row items-center gap-13>
         <HeroCard :class="{ turned: !visible1 && !isSpectator, duellView: settingsStore.settings.duellView }" transition-transform :hero="game.players[0].deck[0]" @discipline="handleCombat" />
         <GameScore :game="game" @show-log="showLog = true" />
@@ -121,6 +128,11 @@ onMounted(async () => {
         </button>
         <button class="icon-btn mx-2 !outline-none" @click="settingsStore.toggleDuellView">
           <div text-7 i="carbon-arrows-vertical" lg:hidden />
+        </button>
+      </div>
+      <div v-if="route.path.includes('online') && !game.running">
+        <button button @click="deleteGame">
+          Delete Game
         </button>
       </div>
       <GameLog v-if="showLog" :log="game.gameLog" @close="showLog = false" />

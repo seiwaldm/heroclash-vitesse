@@ -24,7 +24,6 @@ useHead({
       </p>
 
       <ul>
-        <li>Online-Modus</li>
         <li>Erfahrungspunkte und Level</li>
         <li>Dashboard mit Spielstatistiken</li>
       </ul>

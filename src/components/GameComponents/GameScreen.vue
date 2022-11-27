@@ -95,6 +95,17 @@ onMounted(async () => {
       if (game.value.running)
         game.value.players[0].initiative ? visible1.value = true : visible2.value = true
     })
+    watch(() => game.value.running, async (newVal) => {
+      const userIndex = game.value.players.findIndex(player => player.id === userStore.user.profile.id)
+      const wonBattles = game.value.gameLog.filter(entry => userIndex + 1 === entry.winner).length
+      const profile = await db.records.getOne('profiles', userStore.user.profile.id)
+      const xp = game.value.gameLog.length + wonBattles + profile.xp
+      const finishedGames = profile.finishedGames + 1
+      const wonGames = (game.value.players[userIndex].deck.length > 0 ? 1 : 0) + profile.wonGames
+      const totalBattles = game.value.gameLog.length + profile.totalBattles
+      const wonBattlesTotal = wonBattles + profile.wonBattles
+      db.records.update('profiles', userStore.user.profile.id, { xp, finishedGames, wonGames, totalBattles, wonBattles: wonBattlesTotal })
+    })
     try {
       db.realtime.subscribe(`games/${route.params.id}`, (event) => {
       // console.log(event.record.data)

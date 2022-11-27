@@ -30,6 +30,8 @@ function updateUserName() {
         <div v-if="editName" cursor-pointer i-carbon-edit-off @click="updateUserName" />
       </div>
 
+      <div>XP: {{ userStore.user.profile.xp ? userStore.user.profile.xp : 0 }}</div>
+
       <div>Profile-ID: {{ userStore.user.profile.id }}</div>
 
       <div mt-5>
